@@ -25,7 +25,7 @@
           env = [
             {
               name = "PUBLIC_SURREAL_URL";
-              value = "";
+              value = "https://surrealdb.sassy.technology";
             }
             {
               name = "PUBLIC_SURREAL_NAMESPACE";
@@ -33,7 +33,7 @@
             }
             {
               name = "PUBLIC_SURREAL_DATABASE";
-              value = "rex";
+              value = "sweif";
             }
           ];
           commands = [

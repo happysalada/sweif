@@ -1,5 +1,5 @@
 {
-	"name": "rex",
+	"name": "sweif",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -45,6 +45,7 @@
 	"dependencies": {
 		"leaflet": "^1.9.3",
 		"surrealdb.js": "^0.6.0",
-		"svelte-leafletjs": "^0.10.0"
+		"svelte-headlessui": "^0.0.15",
+		"svelte-transition": "^0.0.7"
 	}
 }

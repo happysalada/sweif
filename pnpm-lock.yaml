@@ -7,9 +7,12 @@ dependencies:
   surrealdb.js:
     specifier: ^0.6.0
     version: 0.6.0
-  svelte-leafletjs:
-    specifier: ^0.10.0
-    version: 0.10.0
+  svelte-headlessui:
+    specifier: ^0.0.15
+    version: 0.0.15
+  svelte-transition:
+    specifier: ^0.0.7
+    version: 0.0.7
 
 devDependencies:
   '@sveltejs/adapter-cloudflare':
@@ -3038,6 +3041,12 @@ packages:
       - sugarss
     dev: true
 
+  /svelte-headlessui@0.0.15:
+    resolution: {integrity: sha512-yIRD2Wg8pqUOq7cbSgu4RKQ2FXf8vM2ORD3a8/d9rSxDWlBr8Ojt58VpFgdn9Fy0zUeI9By3qFRUaL+wD+Jf4A==}
+    dependencies:
+      svelte-transition: 0.0.7
+    dev: false
+
   /svelte-hmr@0.15.1(svelte@3.58.0):
     resolution: {integrity: sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -3046,12 +3055,6 @@ packages:
     dependencies:
       svelte: 3.58.0
     dev: true
-
-  /svelte-leafletjs@0.10.0:
-    resolution: {integrity: sha512-xKIwHZAsdI2EoYvSEp4IDAeLFTaWx/e+gPs7G3Z6MLHNcFieDRKjVHgLt9ilM+xpw1A8Cx0qbtwrfdCYwWfG8g==}
-    dependencies:
-      leaflet: 1.9.3
-    dev: false
 
   /svelte-local-storage-store@0.4.0(svelte@3.58.0):
     resolution: {integrity: sha512-ctPykTt4S3BE5bF0mfV0jKiUR1qlmqLvnAkQvYHLeb9wRyO1MdIFDVI23X+TZEFleATHkTaOpYZswIvf3b2tWA==}
@@ -3110,6 +3113,10 @@ packages:
       svelte: 3.58.0
       typescript: 5.0.4
     dev: true
+
+  /svelte-transition@0.0.7:
+    resolution: {integrity: sha512-YMbl+eIkzeYKBz6E/I8KI8RMezhqB38t2B/Mx8BotmtiN+5wnKath7CWDc+8U9zKGJ/iUYHmx4MwQjIzo05nVg==}
+    dev: false
 
   /svelte@3.58.0:
     resolution: {integrity: sha512-brIBNNB76mXFmU/Kerm4wFnkskBbluBDCjx/8TcpYRb298Yh2dztS2kQ6bhtjMcvUhd5ynClfwpz5h2gnzdQ1A==}

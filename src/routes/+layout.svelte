@@ -13,7 +13,6 @@
 {#if !loaded}
   <HeartLoader />
 {:else}
-  <Nav />
   <main class="h-full bg-gray-100">
     <slot />
   </main>
