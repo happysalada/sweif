@@ -9,7 +9,7 @@
 
   async function contact() {
     submitted = true;
-    const url = "https://formsubmit.co/ajax/raphael@sassy.technology";
+    const url = "https://formsubmit.co/ajax/admin@sweif.com";
     const response = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
@@ -33,7 +33,7 @@
   }
 </script>
 
-<div class="relative isolate bg-gray-900">
+<div id="contact" class="relative isolate bg-gray-900">
   <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
     <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
       <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
@@ -121,7 +121,7 @@
             <label
               for="first-name"
               class="block text-sm font-semibold leading-6 text-white"
-              >First name</label
+              >Nombre</label
             >
             <div class="mt-2.5">
               <input
@@ -138,7 +138,7 @@
             <label
               for="last-name"
               class="block text-sm font-semibold leading-6 text-white"
-              >Last name</label
+              >Apellido</label
             >
             <div class="mt-2.5">
               <input
@@ -172,7 +172,7 @@
             <label
               for="phone-number"
               class="block text-sm font-semibold leading-6 text-white"
-              >Phone number</label
+              >Número de teléfono</label
             >
             <div class="mt-2.5">
               <input
@@ -189,7 +189,7 @@
             <label
               for="message"
               class="block text-sm font-semibold leading-6 text-white"
-              >Message</label
+              >Mensaje</label
             >
             <div class="mt-2.5">
               <textarea
@@ -207,14 +207,14 @@
               type="button"
               on:click={contact}
               class="rounded-md bg-primary-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
-              >Send message</button
+              >Enviar mensaje</button
             >
           {:else}
             <button
               type="button"
               disabled
               class="rounded-md bg-primary-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
-              >Thank you! We will be in touch shortly</button
+              >Gracias! Te contactaremos lo más pronto posible</button
             >
           {/if}
         </div>

@@ -20,7 +20,7 @@
 				<span class="sr-only">Your Company</span>
 				<img
 					class="h-8 w-auto"
-					src="/Sweif-17.png"
+					src="/Sweif.png"
 					alt=""
 				/>
 			</a>
@@ -49,20 +49,16 @@
 			</button>
 		</div>
 		<div class="hidden lg:flex lg:gap-x-12">
-			<a href="#" class="text-sm font-semibold leading-6 text-gray-900"
-				>Product</a
+			<a href="/" class="text-sm font-semibold leading-6 text-gray-900"
+				>Calculadora</a
 			>
 
-			<a href="#" class="text-sm font-semibold leading-6 text-gray-900"
-				>Features</a
+			<a href="#features" class="text-sm font-semibold leading-6 text-gray-900"
+				>Producto</a
 			>
 
-			<a href="#" class="text-sm font-semibold leading-6 text-gray-900"
-				>Marketplace</a
-			>
-
-			<a href="#" class="text-sm font-semibold leading-6 text-gray-900"
-				>Company</a
+			<a href="/#contact" class="text-sm font-semibold leading-6 text-gray-900"
+				>Contacto</a
 			>
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -126,28 +122,23 @@
 				<div class="-my-6 divide-y divide-gray-500/10">
 					<div class="space-y-2 py-6">
 						<a
-							href="#"
+							href="/"
 							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Product</a
+							>Calculadora</a
 						>
 
 						<a
-							href="#"
+							href="/#features"
 							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Features</a
+							>Producto</a
 						>
 
 						<a
-							href="#"
+							href="/#contact"
 							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Marketplace</a
+							>Contacto</a
 						>
 
-						<a
-							href="#"
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Company</a
-						>
 					</div>
 					<div class="py-6">
 						{#if $user?.email}

@@ -8,6 +8,7 @@
 		PUBLIC_SURREAL_NAMESPACE,
 	} from "$env/static/public";
 	import { FormState } from "$lib/globals.d.ts";
+	import Nav from "$lib/Nav.svelte";
 
 	const db = new Surreal(`${PUBLIC_SURREAL_URL}/rpc`);
 
@@ -23,6 +24,7 @@
 	let password: string;
 	let name: string;
 	let companyName: string;
+	// País
 	let passwordConfirmation: string;
 
 	async function signin(): Promise<void> {
@@ -74,6 +76,8 @@
 	}
 </script>
 
+<Nav />
+
 <!--
   This example requires updating your template:
 
@@ -86,16 +90,16 @@
 	<div class="sm:mx-auto sm:w-full sm:max-w-md">
 		<img
 			class="mx-auto h-12 w-auto"
-			src="/Sweif_Logos.svg"
+			src="/Sweif.png"
 			alt="Your Company"
 		/>
 		<h2
 			class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
 		>
 			{#if signinOrUp == SignInUp.Signin}
-				Sign in to your account
+				Inicio de sesión
 			{:else}
-				Create an account
+				Crea una cuenta
 			{/if}
 		</h2>
 		<p class="mt-2 text-center text-sm text-gray-600">
@@ -105,13 +109,13 @@
 					type="button"
 					class="font-medium text-primary-600 hover:text-primary-500"
 					on:click={() => (signinOrUp = SignInUp.Signup)}
-					>Create an account</button
+					>Crea una cuenta</button
 				>
 			{:else}
 				<button
 					type="button"
 					class="font-medium text-primary-600 hover:text-primary-500"
-					on:click={() => (signinOrUp = SignInUp.Signin)}>Sign in</button
+					on:click={() => (signinOrUp = SignInUp.Signin)}>Inicio de sesión</button
 				>
 			{/if}
 		</p>
@@ -127,7 +131,7 @@
 					<label
 						for="name"
 						class="block text-sm font-medium leading-6 text-gray-900"
-						>Name</label
+						>Nombre</label
 					>
 					<div class="mt-2">
 						<input
@@ -167,7 +171,7 @@
 					<label
 						for="email"
 						class="block text-sm font-medium leading-6 text-gray-900"
-						>Email address</label
+						>Email</label
 					>
 					<div class="mt-2">
 						<input
@@ -186,7 +190,7 @@
 					<label
 						for="password"
 						class="block text-sm font-medium leading-6 text-gray-900"
-						>Password</label
+						>Contraseña</label
 					>
 					<div class="mt-2">
 						<input
@@ -207,7 +211,7 @@
 					<label
 						for="passwordConfirmation"
 						class="block text-sm font-medium leading-6 text-gray-900"
-						>Password Confirmation</label
+						>Confirmar Contraseña</label
 					>
 					<div class="mt-2">
 						<input
@@ -232,7 +236,7 @@
 							class="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-600"
 						/>
 						<label for="remember-me" class="ml-2 block text-sm text-gray-900"
-							>Remember me</label
+							>Recordar me</label
 						>
 					</div>
 
@@ -240,7 +244,7 @@
 						<a
 							href="#"
 							class="font-medium text-primary-600 hover:text-primary-500"
-							>Forgot your password?</a
+							>Olvidaste tu contraseña?</a
 						>
 					</div>
 				</div>
