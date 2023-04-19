@@ -23,7 +23,7 @@
 	let email: string;
 	let password: string;
 	let name: string;
-	let companyName: string;
+	let country: string;
 	// País
 	let passwordConfirmation: string;
 
@@ -34,8 +34,10 @@
 				NS: PUBLIC_SURREAL_NAMESPACE,
 				DB: PUBLIC_SURREAL_DATABASE,
 				SC: "end_user",
+				name,
+				country,
 				email,
-				pass: password,
+				password,
 			});
 			user.set({ email, password });
 			goto("/search");
@@ -54,7 +56,7 @@
 				DB: PUBLIC_SURREAL_DATABASE,
 				SC: "end_user",
 				email,
-				pass: password,
+				password,
 			});
 			user.set({ email, password });
 			goto("/profile");
@@ -88,11 +90,7 @@
 -->
 <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-md">
-		<img
-			class="mx-auto h-12 w-auto"
-			src="/Sweif.png"
-			alt="Your Company"
-		/>
+		<img class="mx-auto h-12 w-auto" src="/Sweif.png" alt="Your Company" />
 		<h2
 			class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
 		>
@@ -115,7 +113,8 @@
 				<button
 					type="button"
 					class="font-medium text-primary-600 hover:text-primary-500"
-					on:click={() => (signinOrUp = SignInUp.Signin)}>Inicio de sesión</button
+					on:click={() => (signinOrUp = SignInUp.Signin)}
+					>Inicio de sesión</button
 				>
 			{/if}
 		</p>
@@ -124,47 +123,45 @@
 	<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
 		<div class="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
 			<form class="space-y-6" action="#" method="POST">
-
 				{#if signinOrUp == SignInUp.Signup}
-
-				<div>
-					<label
-						for="name"
-						class="block text-sm font-medium leading-6 text-gray-900"
-						>Nombre</label
-					>
-					<div class="mt-2">
-						<input
-							id="name"
-							name="name"
-							type="name"
-							autocomplete="name"
-							required
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-							bind:value={name}
-						/>
+					<div>
+						<label
+							for="name"
+							class="block text-sm font-medium leading-6 text-gray-900"
+							>Nombre</label
+						>
+						<div class="mt-2">
+							<input
+								id="name"
+								name="name"
+								type="name"
+								autocomplete="name"
+								required
+								class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+								bind:value={name}
+							/>
+						</div>
 					</div>
-				</div>
 
-				<div>
-					<label
-						for="companyName"
-						class="block text-sm font-medium leading-6 text-gray-900"
-						>Company Name</label
-					>
-					<div class="mt-2">
-						<input
-							id="companyName"
-							name="companyName"
-							type="companyName"
-							autocomplete="companyName"
-							required
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-							bind:value={companyName}
-						/>
+					<div class="sm:col-span-2">
+						<label
+							for="country"
+							class="block text-sm font-medium leading-6 text-gray-900"
+							>País</label
+						>
+						<div class="mt-2">
+							<select
+								id="country"
+								name="country"
+								autocomplete="country"
+								bind:value={country}
+								class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+							>
+								<option value="CO">Columbia</option>
+								<option value="ES">Spain</option>
+							</select>
+						</div>
 					</div>
-				</div>
-
 				{/if}
 
 				<div>
@@ -206,25 +203,23 @@
 				</div>
 
 				{#if signinOrUp == SignInUp.Signup}
-
-				<div>
-					<label
-						for="passwordConfirmation"
-						class="block text-sm font-medium leading-6 text-gray-900"
-						>Confirmar Contraseña</label
-					>
-					<div class="mt-2">
-						<input
-							id="passwordConfirmation"
-							name="passwordConfirmation"
-							type="passwordConfirmation"
-							required
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-							bind:value={passwordConfirmation}
-						/>
+					<div>
+						<label
+							for="passwordConfirmation"
+							class="block text-sm font-medium leading-6 text-gray-900"
+							>Confirmar Contraseña</label
+						>
+						<div class="mt-2">
+							<input
+								id="passwordConfirmation"
+								name="passwordConfirmation"
+								type="passwordConfirmation"
+								required
+								class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+								bind:value={passwordConfirmation}
+							/>
+						</div>
 					</div>
-				</div>
-
 				{/if}
 
 				<div class="flex items-center justify-between">
@@ -251,19 +246,19 @@
 
 				<div>
 					{#if signinOrUp == SignInUp.Signin}
-					<button
-						type="button"
-						on:click={() => signin()}
-						class="flex w-full justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-						>Sign in</button
-					>
+						<button
+							type="button"
+							on:click={() => signin()}
+							class="flex w-full justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+							>Sign in</button
+						>
 					{:else}
-					<button
-						type="button"
-						on:click={() => signup()}
-						class="flex w-full justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-						>Sign in</button
-					>
+						<button
+							type="button"
+							on:click={() => signup()}
+							class="flex w-full justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+							>Sign in</button
+						>
 					{/if}
 				</div>
 			</form>
