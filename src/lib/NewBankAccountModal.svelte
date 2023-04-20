@@ -28,7 +28,7 @@
     class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
   />
 
-  <div class="fixed inset-0 z-10 overflow-y-auto">
+  <div class="fixed inset-0 z-10 overflow-y-auto" class:hidden={!showModal}>
     <div
       class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
     >
@@ -99,27 +99,29 @@
               Create a new bank account
             </h3>
             <div class="mt-2">
-              <p class="text-sm text-gray-500">Information to create the bank account</p>
+              <p class="text-sm text-gray-500">
+                Information to create the bank account
+              </p>
             </div>
 
-  					<div class="mt-2">
-  						<label
-  							for="name"
-  							class="block text-sm font-medium leading-6 text-gray-900"
-  							>Account nickname</label
-  						>
-  						<div class="mt-2">
-  							<input
-  								id="bankName"
-  								name="bankName"
-  								type="bankName"
-  								autocomplete="bankName"
-  								required
-  								class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-  								bind:value={bankName}
-  							/>
-  						</div>
-  					</div>
+            <div class="mt-2">
+              <label
+                for="name"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Account nickname</label
+              >
+              <div class="mt-2">
+                <input
+                  id="bankName"
+                  name="bankName"
+                  type="bankName"
+                  autocomplete="bankName"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                  bind:value={bankName}
+                />
+              </div>
+            </div>
 
             <div class="mt-2">
               <label
@@ -141,63 +143,62 @@
               </div>
             </div>
 
-  					<div class="mt-2">
-  						<label
-  							for="name"
-  							class="block text-sm font-medium leading-6 text-gray-900"
-  							>Bank name</label
-  						>
-  						<div class="mt-2">
-  							<input
-  								id="bankName"
-  								name="bankName"
-  								type="bankName"
-  								autocomplete="bankName"
-  								required
-  								class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-  								bind:value={bankName}
-  							/>
-  						</div>
-  					</div>
+            <div class="mt-2">
+              <label
+                for="name"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Bank name</label
+              >
+              <div class="mt-2">
+                <input
+                  id="bankName"
+                  name="bankName"
+                  type="bankName"
+                  autocomplete="bankName"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                  bind:value={bankName}
+                />
+              </div>
+            </div>
 
-  					<div class="mt-2">
-  						<label
-  							for="name"
-  							class="block text-sm font-medium leading-6 text-gray-900"
-  							>IBAN</label
-  						>
-  						<div class="mt-2">
-  							<input
-  								id="bankName"
-  								name="bankName"
-  								type="bankName"
-  								autocomplete="bankName"
-  								required
-  								class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-  								bind:value={bankName}
-  							/>
-  						</div>
-  					</div>
+            <div class="mt-2">
+              <label
+                for="name"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >IBAN</label
+              >
+              <div class="mt-2">
+                <input
+                  id="bankName"
+                  name="bankName"
+                  type="bankName"
+                  autocomplete="bankName"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                  bind:value={bankName}
+                />
+              </div>
+            </div>
 
-  					<div class="mt-2">
-  						<label
-  							for="name"
-  							class="block text-sm font-medium leading-6 text-gray-900"
-  							>Account owner</label
-  						>
-  						<div class="mt-2">
-  							<input
-  								id="bankName"
-  								name="bankName"
-  								type="bankName"
-  								autocomplete="bankName"
-  								required
-  								class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-  								bind:value={bankName}
-  							/>
-  						</div>
-  					</div>
-
+            <div class="mt-2">
+              <label
+                for="name"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Account owner</label
+              >
+              <div class="mt-2">
+                <input
+                  id="bankName"
+                  name="bankName"
+                  type="bankName"
+                  autocomplete="bankName"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                  bind:value={bankName}
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">

@@ -5,7 +5,7 @@
   let showModal = false;
 </script>
 
-<NewBankAccountModal {showModal} />
+<NewBankAccountModal bind:showModal />
 
 <UserNav />
 
