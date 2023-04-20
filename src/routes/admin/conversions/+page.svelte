@@ -29,17 +29,17 @@
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Title</th
+                  >From</th
                 >
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Email</th
+                  >To</th
                 >
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Role</th
+                  >Fee</th
                 >
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-3">
                   <span class="sr-only">Edit</span>
@@ -54,13 +54,13 @@
                   >Lindsay Walton</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >Front-end Developer</td
+                  >COP $1,000,000.00</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >lindsay.walton@example.com</td
+                  >USD $1,000.00</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >Member</td
+                  >USD $20.00 (2.0%)</td
                 >
                 <td
                   class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"

@@ -48,7 +48,7 @@
         >
           <div class="flex-1 truncate px-4 py-2 text-sm">
             <a
-              href="/admin/deposit_request"
+              href="/admin/deposit_requests"
               class="font-medium text-gray-900 hover:text-gray-600">Deposit requests</a
             >
             <p class="text-gray-500">120</p>
@@ -85,7 +85,7 @@
         >
           <div class="flex-1 truncate px-4 py-2 text-sm">
             <a
-              href="/admin/withdrawals"
+              href="/admin/withdrawal_requests"
               class="font-medium text-gray-900 hover:text-gray-600"
               >Withdrawal Requests</a
             >

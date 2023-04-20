@@ -1,3 +1,6 @@
+<script lang="ts">
+  import { humanReadable } from "../../../utils";
+</script>
 <div class="m-12">
   <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
@@ -29,17 +32,22 @@
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Title</th
+                  >IBAN</th
                 >
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Email</th
+                  >Amount</th
                 >
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Role</th
+                  >Processed at</th
+                >
+                <th
+                  scope="col"
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >Created at</th
                 >
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-3">
                   <span class="sr-only">Edit</span>
@@ -54,13 +62,16 @@
                   >Lindsay Walton</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >Front-end Developer</td
+                  >ES9121000418450200051332</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >lindsay.walton@example.com</td
+                  >COP $1,000,000.00</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >Member</td
+                  >{humanReadable(new Date())}</td
+                >
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                  >{humanReadable(new Date())}</td
                 >
                 <td
                   class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"

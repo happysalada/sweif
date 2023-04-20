@@ -1,17 +1,20 @@
+<script lang="ts">
+  import { humanReadable } from "../../../utils";
+</script>
 <div class="m-12">
   <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
         <h1 class="text-base font-semibold leading-6 text-gray-900">Withdrawals</h1>
         <p class="mt-2 text-sm text-gray-700">
-          A list of all the withdrawals made by users
+          A list of all the withdrawal requests made by users
         </p>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
         <button
           type="button"
           class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >Add withdrawal</button
+          >Add withdrawal request</button
         >
       </div>
     </div>
@@ -29,20 +32,35 @@
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Title</th
+                  >Phone number</th
                 >
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Email</th
+                  >Bank name</th
                 >
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >Role</th
+                  >IBAN</th
+                >
+                <th
+                  scope="col"
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >Amount</th
+                >
+                <th
+                  scope="col"
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >Fee</th
+                >
+                <th
+                  scope="col"
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >Processed at</th
                 >
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-3">
-                  <span class="sr-only">Edit</span>
+                  <span class="sr-only">Confirm</span>
                 </th>
               </tr>
             </thead>
@@ -54,19 +72,28 @@
                   >Lindsay Walton</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >Front-end Developer</td
+                  >+57 310 2234678</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >lindsay.walton@example.com</td
+                  >Bancolombia</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >Member</td
+                  >ES9121000418450200051332</td
+                >
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                  >EURC 1,000.00</td
+                >
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                  >EURC 20.00 (2%)</td
+                >
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                  >{humanReadable(new Date())}</td
                 >
                 <td
                   class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"
                 >
                   <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                    >Edit<span class="sr-only">, Lindsay Walton</span></a
+                    >Confirm<span class="sr-only">, Lindsay Walton</span></a
                   >
                 </td>
               </tr>

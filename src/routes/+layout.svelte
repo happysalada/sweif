@@ -12,7 +12,7 @@
 {#if !loaded}
   <HeartLoader />
 {:else}
-  <main class="h-full bg-gray-100">
+  <main class="h-full">
     <slot />
   </main>
 {/if}
