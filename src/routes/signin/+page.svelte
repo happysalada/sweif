@@ -30,15 +30,14 @@
 	async function signin(): Promise<void> {
 		state = FormState.Submitted;
 		try {
-			await db.signin({
+			let response = await db.signin({
 				NS: PUBLIC_SURREAL_NAMESPACE,
 				DB: PUBLIC_SURREAL_DATABASE,
 				SC: "end_user",
-				name,
-				country,
 				email,
 				password,
 			});
+			console.log(response);
 			user.set({ email, password });
 			goto("/search");
 		} catch (e) {
@@ -55,6 +54,8 @@
 				NS: PUBLIC_SURREAL_NAMESPACE,
 				DB: PUBLIC_SURREAL_DATABASE,
 				SC: "end_user",
+				name,
+				country,
 				email,
 				password,
 			});

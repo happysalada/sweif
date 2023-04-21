@@ -41,8 +41,18 @@ DEFINE TABLE user SCHEMALESS
      FOR select, update, delete WHERE id = $auth.id, 
      FOR create NONE;
 DEFINE SCOPE end_user SESSION 24h
-    SIGNUP ( CREATE user SET email = $email, pass = crypto::argon2::generate($pass) )
-    SIGNIN ( SELECT * FROM user WHERE email = $email AND crypto::argon2::compare(pass, $pass) )
-;
+    SIGNUP ( CREATE user SET email = $email, pass = crypto::argon2::generate($password), name = $name, country = $country, admin = false )
+    SIGNIN ( SELECT * FROM user WHERE email = $email AND crypto::argon2::compare(password, $password) );
+DEFINE SCOPE admin SESSION 24h
+    SIGNIN ( SELECT * FROM user WHERE email = $email AND crypto::argon2::compare(password, $password) AND admin = true );
+DEFINE TABLE bank_accounts SCHEMALESS
+   PERMISSIONS 
+     FOR create, select, update, delete WHERE user_id = $auth.id;
+DEFINE TABLE deposit_requests SCHEMALESS
+   PERMISSIONS 
+     FOR create, select, update, delete WHERE user_id = $auth.id;
+DEFINE TABLE withdrawal_requests SCHEMALESS
+   PERMISSIONS 
+     FOR create, select, update, delete WHERE user_id = $auth.id;
 ```
 
