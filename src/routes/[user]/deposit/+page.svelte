@@ -21,36 +21,27 @@
   <div class="border-t border-gray-100">
     <dl class="divide-y divide-gray-100">
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900">Full name</dt>
+        <dt class="text-sm font-medium text-gray-900">Name</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          Margot Foster
+          Bitval Colombia SAS
         </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900">Application for</dt>
+        <dt class="text-sm font-medium text-gray-900">NIT</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          Backend Developer
+          901617634-7
         </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900">Email address</dt>
+        <dt class="text-sm font-medium text-gray-900">Número de cuenta</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          margotfoster@example.com
+          19300001303
         </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900">Salary expectation</dt>
+        <dt class="text-sm font-medium text-gray-900">Descripción</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          $120,000
-        </dd>
-      </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900">About</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt
-          cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint.
-          Sit id mollit nulla mollit nostrud in ea officia proident. Irure
-          nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+          Por favor consignar el valor a recargar en la siguiente cuenta bancaria. Una vez hecha la transacción, por favor ingresar en el siguiente recuadro el valor enviado y subir adjuntar el comprobante de la transacción.
         </dd>
       </div>
 
