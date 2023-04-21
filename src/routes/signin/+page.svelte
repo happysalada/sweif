@@ -30,15 +30,14 @@
 	async function signin(): Promise<void> {
 		state = FormState.Submitted;
 		try {
-			let response = await db.signin({
+			let jwt = await db.signin({
 				NS: PUBLIC_SURREAL_NAMESPACE,
 				DB: PUBLIC_SURREAL_DATABASE,
 				SC: "end_user",
 				email,
 				password,
 			});
-			console.log(response);
-			user.set({ email, password });
+			user.set({ email, password, jwt });
 			goto(`${email}/dashboard`);
 		} catch (e) {
 			state = FormState.Error;
@@ -50,7 +49,7 @@
 	async function signup(): Promise<void> {
 		state = FormState.Submitted;
 		try {
-			await db.signup({
+			let jwt = await db.signup({
 				NS: PUBLIC_SURREAL_NAMESPACE,
 				DB: PUBLIC_SURREAL_DATABASE,
 				SC: "end_user",
@@ -59,7 +58,7 @@
 				email,
 				password,
 			});
-			user.set({ email, password });
+			user.set({ email, password, jwt });
 			goto(`${email}/dashboard`);
 		} catch (e) {
 			state = FormState.Error;

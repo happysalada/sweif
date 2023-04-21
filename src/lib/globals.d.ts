@@ -5,6 +5,7 @@
 export type User = {
   email: string,
   password: string,
+  jwt: string,
 }
 
 export type Property = {
