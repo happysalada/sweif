@@ -39,7 +39,7 @@
 			});
 			console.log(response);
 			user.set({ email, password });
-			goto("/search");
+			goto(`{email}/dashboard`);
 		} catch (e) {
 			state = FormState.Error;
 			error = e.toString();
@@ -60,7 +60,7 @@
 				password,
 			});
 			user.set({ email, password });
-			goto("/profile");
+			goto(`{email}/dashboard`);
 		} catch (e) {
 			state = FormState.Error;
 			error = e.toString();
