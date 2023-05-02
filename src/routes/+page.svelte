@@ -50,13 +50,15 @@
     }
     let feeTable = stringToDecimalTable(feeTableString);
     let feeRange = feeTable.find(({min, max}) => inputAmountDec >= min && inputAmountDec <= max)
+    console.log("feeRange", feeRange)
     if (feeRange === undefined) {
       outputAmount = (direction == FxDirection.Multiply) ? inputAmountDec.mul(value).toDecimalPlaces(2).toNumber() : inputAmountDec.div(value).toDecimalPlaces(2).toNumber()
       return
     }
     let feeDec = inputAmountDec.mul(feeRange.rate);
     fee = feeDec.toDecimalPlaces(2).toNumber();
-    outputAmount = inputAmountDec.minus(feeDec).toDecimalPlaces(2).toNumber()
+    let preConversion = inputAmountDec.minus(feeDec);
+    outputAmount = (direction == FxDirection.Multiply) ? preConversion.mul(value).toDecimalPlaces(2).toNumber() : preConversion.mul(value).toDecimalPlaces(2).toNumber()
   }
 
   function modifyOutput() {
@@ -72,12 +74,14 @@
     }
     let feeTable = stringToDecimalTable(feeTableString);
     let initialFeeRange = feeTable.find(({min, max}) => preConversion >= min && preConversion <= max)
+    console.log("initialFeeRange", initialFeeRange);
     if (initialFeeRange === undefined) {
       inputAmount = preConversion.toNumber()
       return
     }
     let initialInputAmount = preConversion.div((new Decimal(1)).minus(initialFeeRange.rate));
     let finalFeeRange = feeTable.find(({min, max}) => initialInputAmount >= min && initialInputAmount <= max) || initialFeeRange;
+    console.log("finalFeeRange", finalFeeRange);
     let finalInputAmount = preConversion.div((new Decimal(1)).minus(finalFeeRange.rate));
     inputAmount = finalInputAmount.toDecimalPlaces(2).toNumber()
     fee = finalInputAmount.mul(finalFeeRange.rate).toDecimalPlaces(2).toNumber();

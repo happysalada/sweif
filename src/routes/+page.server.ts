@@ -33,7 +33,7 @@ export const load = (async ({ platform, fetch }) => {
   let eurCopResponse = await fetch(`https://serpapi.com/search?engine=google_finance&q=${"EUR-COP"}&api_key=${api_key}`)
   let eurCop = await eurCopResponse.json();
   let eurCopRate: number = eurCop.summary?.extracted_price;
-  let copTable = EUR_TABLE.map(({min, max, rate}) => ({ min: min.div(eurCopRate), max: max.div(eurCopRate), rate}))
+  let copTable = EUR_TABLE.map(({min, max, rate}) => ({ min: min.mul(eurCopRate), max: max.mul(eurCopRate), rate}))
   return {
     fxRates: {
       "EUR-COP": eurCopRate,
