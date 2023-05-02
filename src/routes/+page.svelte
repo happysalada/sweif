@@ -15,6 +15,9 @@
   let fee = 0;
   $: fxRate = getFxRate(inputCurrency, outputCurrency);
 
+  console.log(data)
+  console.log(fxRate)
+
   function getFxRate(
     inputCurrency: Currency,
     outputCurrency: Currency
