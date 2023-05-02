@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { humanReadable } from "../../../utils";
+  import { humanReadable } from "$lib/utils";
 </script>
 
 <div class="m-12">
