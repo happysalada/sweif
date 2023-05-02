@@ -3,6 +3,7 @@
 	import { goto } from "$app/navigation";
 	import Surreal from "surrealdb.js";
 	import { PUBLIC_SURREAL_URL } from "$env/static/public";
+	import Logo from "$lib/Logo.svelte";
 
 	function signout(): void {
 		const db = new Surreal(`${PUBLIC_SURREAL_URL}/rpc`);
@@ -22,11 +23,7 @@
 		<div class="flex lg:flex-1">
 			<a href="/" class="">
 				<span class="sr-only">Your Company</span>
-				<img
-					class="h-8"
-					src="/Sweif.png"
-					alt=""
-				/>
+				<Logo classes="h-12 w-20 rounded-lg" />
 			</a>
 		</div>
 		<div class="flex lg:hidden">

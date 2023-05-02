@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { clickOutside } from "../utils";
+  import { clickOutside } from "$lib/utils";
 
   export let showModal = false;
   let error = "";
@@ -108,7 +108,7 @@
               <label
                 for="name"
                 class="block text-sm font-medium leading-6 text-gray-900"
-                >Account nickname</label
+                >Nombre de la cuenta</label
               >
               <div class="mt-2">
                 <input
@@ -147,7 +147,7 @@
               <label
                 for="name"
                 class="block text-sm font-medium leading-6 text-gray-900"
-                >Bank name</label
+                >Nombre del Banco</label
               >
               <div class="mt-2">
                 <input
@@ -185,7 +185,26 @@
               <label
                 for="name"
                 class="block text-sm font-medium leading-6 text-gray-900"
-                >Account owner</label
+                >Identificacion</label
+              >
+              <div class="mt-2">
+                <input
+                  id="bankName"
+                  name="bankName"
+                  type="bankName"
+                  autocomplete="bankName"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                  bind:value={bankName}
+                />
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <label
+                for="name"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Nombre del titular de la cuenta</label
               >
               <div class="mt-2">
                 <input

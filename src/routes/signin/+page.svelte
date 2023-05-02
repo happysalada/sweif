@@ -27,6 +27,12 @@
 	// País
 	let passwordConfirmation: string;
 
+	user.subscribe($user => {
+		if ($user?.email) {
+			goto(`/${$user.email}/dashboard`)
+		}
+	})
+
 	async function signin(): Promise<void> {
 		state = FormState.Submitted;
 		try {

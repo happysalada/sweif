@@ -12,10 +12,10 @@
 <div class="overflow-hidden bg-white shadow sm:rounded-lg m-12">
   <div class="px-4 py-6 sm:px-6">
     <h3 class="text-base font-semibold leading-7 text-gray-900">
-      Bank details
+      Transferencia Bancaria
     </h3>
     <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-      Here are the bank details for depositing on sweif
+      Para recargar tu billetera sweif envia una transferencia bancaria a la cuenta Bancolombia de Bitva Colombia SAS y completa los espacios inferiores. Una vez que el dinero ingrese a la cuenta se vera reflejado en tu cuenta sweif.
     </p>
   </div>
   <div class="border-t border-gray-100">
@@ -76,7 +76,7 @@
       </div>
 
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Amount</dt>
+        <dt class="text-sm font-medium leading-6 text-gray-900">Monto transfeirdo a cuenta Bitval</dt>
         <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
           <div class="flex justify-start gap-8">
             <div>

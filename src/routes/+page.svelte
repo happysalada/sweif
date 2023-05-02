@@ -1,11 +1,30 @@
 <script lang="ts">
+  import type { PageData } from './$types';
+  import { FiatCurrency } from '$lib/types'
   import Nav from "$lib/Nav.svelte";
   import Contact from "$lib/Contact.svelte";
-  import { searchQuery } from "$lib/../stores";
+  import CurrencyDropdown from '$lib/CurrencyDropdown.svelte';
   import { goto } from "$app/navigation";
+  export let data: PageData;
+  let inputAmount = 0;
+  let inputCurrency = FiatCurrency.COP;
+  let outputAmount: number;
+  let outputCurrency = FiatCurrency.EUR;
+  console.log(data)
+  $: fxRate = getFxRate(inputCurrency, outputCurrency);
 
-  async function search() {
-    goto(`/search?query=${$searchQuery}`);
+  function getFxRate(inputCurrency: Currency, outputCurrency: Currency): number {
+    let rate = data.fxRates?.[`${inputCurrency}-${outputCurrency}`];
+    if (!rate) return 1.0;
+    return rate
+  }
+
+  function modifyInput() {
+    
+  }
+
+  function modifyOutput() {
+    
   }
 </script>
 
@@ -61,61 +80,132 @@
             class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
             >Crea tu cuenta</a
           >
-          <a href="#features" class="text-sm font-semibold leading-6 text-gray-900"
+          <a
+            href="#features"
+            class="text-sm font-semibold leading-6 text-gray-900"
             >Más información<span aria-hidden="true">→</span></a
           >
         </div>
       </div>
 
-      <div class="lg:col-start-3 lg:row-end-1">
+      <div class="max-w-sm">
         <h2 class="sr-only">Summary</h2>
         <div class="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
           <dl class="flex flex-wrap">
-            <div class="flex-auto pl-6 pt-6">
-              <dt class="text-sm font-semibold leading-6 text-gray-900">Amount</dt>
-              <dd class="mt-1 text-base font-semibold leading-6 text-gray-900">$10,560.00</dd>
+            <div class="px-6 pt-6 flex-auto">
+              <label
+                for="account-number"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >You send</label
+              >
+              <div class="mt-2 rounded-md shadow-sm flex gap-x-4">
+                <input
+                  type="text"
+                  name="inputAmount"
+                  id="inputAmount"
+                  class="rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="1,000"
+                  bind:value={inputAmount}
+                  on:input={modifyInput}
+                />
+                <CurrencyDropdown currencies={Object.keys(FiatCurrency)} bind:selected={inputCurrency}/>
+              </div>
             </div>
-            <div class="flex-none self-end px-6 pt-4">
-              <dt class="sr-only">Status</dt>
-              <dd class="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-600/20">Paid</dd>
-            </div>
-            <div class="mt-6 flex w-full flex-none gap-x-4 border-t border-gray-900/5 px-6 pt-6">
-              <dt class="flex-none">
-                <span class="sr-only">Client</span>
-                <svg class="h-6 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-5.5-2.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM10 12a5.99 5.99 0 00-4.793 2.39A6.483 6.483 0 0010 16.5a6.483 6.483 0 004.793-2.11A5.99 5.99 0 0010 12z" clip-rule="evenodd" />
+
+            <div
+              class="mt-6 flex w-full flex-wrap gap-x-4 border-t border-gray-900/5 px-6 pt-6"
+            >
+              <dd class="flex flex-auto">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-5 text-gray-400"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
-              </dt>
-              <dd class="text-sm font-medium leading-6 text-gray-900">Alex Curren</dd>
-            </div>
-            <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
-              <dt class="flex-none">
-                <span class="sr-only">Due date</span>
-                <svg class="h-6 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z" />
-                  <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
-                </svg>
-              </dt>
-              <dd class="text-sm leading-6 text-gray-500">
-                <time datetime="2023-01-31">January 31, 2023</time>
+                <p class="pl-4 text-sm text-gray-500 leading-6">7$</p>
               </dd>
+              <dt class="text-sm text-gray-500 leading-6">Transfer fee</dt>
             </div>
             <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
-              <dt class="flex-none">
-                <span class="sr-only">Status</span>
-                <svg class="h-6 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M2.5 4A1.5 1.5 0 001 5.5V6h18v-.5A1.5 1.5 0 0017.5 4h-15zM19 8.5H1v6A1.5 1.5 0 002.5 16h15a1.5 1.5 0 001.5-1.5v-6zM3 13.25a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zm4.75-.75a.75.75 0 000 1.5h3.5a.75.75 0 000-1.5h-3.5z" clip-rule="evenodd" />
+              <dt class="flex flex-auto">
+                <span class="sr-only">Total we convert</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-5 text-gray-400 rotate-90"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.25 9v6m-4.5 0V9M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
+                <p class="pl-4 text-sm text-gray-500 leading-6">7000 $</p>
               </dt>
-              <dd class="text-sm leading-6 text-gray-500">Paid with MasterCard</dd>
+              <dt class="text-sm leading-6 text-gray-500">
+                Total we will convert
+              </dt>
+            </div>
+            <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
+              <dd class="flex flex-auto">
+                <span class="sr-only">Status</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-5 text-gray-400 rotate-45"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p class="pl-4 text-sm text-gray-500 leading-6">1.21234</p>
+              </dd>
+              <dt class="text-sm leading-6 text-gray-500">
+                Guaranteed rate for 24h
+              </dt>
             </div>
           </dl>
-          <div class="mt-6 border-t border-gray-900/5 px-6 py-6">
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Download receipt <span aria-hidden="true">&rarr;</span></a>
+          <div class="mt-6 border-t border-gray-900/5 pb-6">
+
+            <div class="px-6 pt-6 flex-auto">
+              <label
+                for="account-number"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >They receive</label
+              >
+              <div class="mt-2 rounded-md shadow-sm flex gap-x-4">
+                <input
+                  type="text"
+                  name="outputAmount"
+                  id="outputAmount"
+                  class="rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="1,000"
+                  bind:value={outputAmount}
+                  on:input={modifyOutput}
+                />
+                <CurrencyDropdown currencies={Object.keys(FiatCurrency)} bind:selected={outputCurrency}/>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -206,8 +296,8 @@
                 Giros internacionales usando monedas digitales
               </dt>
               <dd class="inline">
-                Transferencias internacionales muy rapidas y seguras usando monedas
-                digitales.
+                Transferencias internacionales muy rapidas y seguras usando
+                monedas digitales.
               </dd>
             </div>
 
