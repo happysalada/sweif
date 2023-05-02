@@ -10,7 +10,7 @@
   let inputCurrency = FiatCurrency.COP;
   let outputAmount: number;
   let outputCurrency = FiatCurrency.EUR;
-  console.log(data)
+  let fee = 0;
   $: fxRate = getFxRate(inputCurrency, outputCurrency);
 
   function getFxRate(inputCurrency: Currency, outputCurrency: Currency): number {
@@ -20,11 +20,11 @@
   }
 
   function modifyInput() {
-    
+    outputAmount = (inputAmount - fee) * fxRate;    
   }
 
   function modifyOutput() {
-    
+    inputAmount = (outputAmount / fxRate) - fee;
   }
 </script>
 
@@ -130,7 +130,7 @@
                     d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p class="pl-4 text-sm text-gray-500 leading-6">7$</p>
+                <p class="pl-4 text-sm text-gray-500 leading-6">{fee} {inputCurrency}</p>
               </dd>
               <dt class="text-sm text-gray-500 leading-6">Transfer fee</dt>
             </div>
@@ -151,7 +151,7 @@
                     d="M14.25 9v6m-4.5 0V9M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p class="pl-4 text-sm text-gray-500 leading-6">7000 $</p>
+                <p class="pl-4 text-sm text-gray-500 leading-6">{inputAmount - fee} {inputCurrency}</p>
               </dt>
               <dt class="text-sm leading-6 text-gray-500">
                 Total we will convert
@@ -159,7 +159,7 @@
             </div>
             <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
               <dd class="flex flex-auto">
-                <span class="sr-only">Status</span>
+                <span class="sr-only">Fx rate</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -174,7 +174,7 @@
                     d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p class="pl-4 text-sm text-gray-500 leading-6">1.21234</p>
+                <p class="pl-4 text-sm text-gray-500 leading-6">{fxRate}</p>
               </dd>
               <dt class="text-sm leading-6 text-gray-500">
                 Guaranteed rate for 24h

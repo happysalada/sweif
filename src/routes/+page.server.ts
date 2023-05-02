@@ -17,7 +17,6 @@ export const load = (async ({ platform, fetch }) => {
   let eurCopRate: number = eurCop.summary?.extracted_price;
   let copEurRate = eurCopRate ? 1 / eurCopRate: 1.0 ;
   return {
-    eurCop,
     fxRates: {
       "EUR-COP": eurCopRate,
       "COP-EUR": copEurRate,
