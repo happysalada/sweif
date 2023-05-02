@@ -1,8 +1,10 @@
+import type { Decimal } from "decimal.js"
+
 export enum FormState {
-	Ready,
-	Submitted,
-	Success,
-	Error,
+  Ready,
+  Submitted,
+  Success,
+  Error,
 }
 
 export enum FiatCurrency {
@@ -15,3 +17,9 @@ export enum StableCoin {
   USDC = 'USDC',
   USDT = 'USDT',
 }
+
+export enum FxDirection {
+  Multiply = "Multiply",
+  Divide = "Divide"
+}
+

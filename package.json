@@ -43,6 +43,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"decimal.js": "^10.4.3",
 		"surrealdb.js": "^0.6.0",
 		"svelte-headlessui": "^0.0.15",
 		"svelte-transition": "^0.0.7"

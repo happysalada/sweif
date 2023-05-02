@@ -5,3 +5,8 @@ type User = {
 }
 
 type Currency = FiatCurrency | StableCoin;
+
+type FxRate = {
+  value: Decimal,
+  direction: FxDirection
+}

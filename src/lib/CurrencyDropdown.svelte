@@ -49,15 +49,15 @@
       </button>
 
       <!--
-                        Select popover, show/hide based on select state.
+        Select popover, show/hide based on select state.
 
-                        Entering: ""
-                          From: ""
-                          To: ""
-                        Leaving: "transition ease-in duration-100"
-                          From: "opacity-100"
-                          To: "opacity-0"
-                      -->
+        Entering: ""
+          From: ""
+          To: ""
+        Leaving: "transition ease-in duration-100"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
       <ul
         class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
         class:hidden={!dropdownOpen}
@@ -67,16 +67,17 @@
         aria-activedescendant="listbox-option-3"
       >
         <!--
-                          Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
+          Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
 
-                          Highlighted: "bg-indigo-600 text-white", Not Highlighted: "text-gray-900"
-                        -->
+          Highlighted: "bg-indigo-600 text-white", Not Highlighted: "text-gray-900"
+        -->
         {#each currencies as currency}
         <li
-          class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9"
+          class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white"
           id="listbox-option-0"
           role="option"
           aria-selected={currency == selected}
+          on:click={() => {selected = currency; dropdownOpen = false}}
         >
           <div class="flex items-center">
             {#if currency == FiatCurrency.COP}
