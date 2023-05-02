@@ -43,8 +43,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"leaflet": "^1.9.3",
-		"serpapi": "^1.1.1",
 		"surrealdb.js": "^0.6.0",
 		"svelte-headlessui": "^0.0.15",
 		"svelte-transition": "^0.0.7"
