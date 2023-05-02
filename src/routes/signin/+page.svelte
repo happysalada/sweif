@@ -7,7 +7,7 @@
 		PUBLIC_SURREAL_DATABASE,
 		PUBLIC_SURREAL_NAMESPACE,
 	} from "$env/static/public";
-	import { FormState } from "$lib/globals.d.ts";
+	import { FormState } from "$lib/types";
 	import Nav from "$lib/Nav.svelte";
 
 	const db = new Surreal(`${PUBLIC_SURREAL_URL}/rpc`);
