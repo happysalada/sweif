@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { Decimal } from "decimal.js";
 import { FiatCurrency } from '$lib/types';
+import { decimalToStringTable } from '$lib/utils';
 // import { getJson } from "serpapi";
 
 const EUR_TABLE = [
@@ -14,11 +15,15 @@ const EUR_TABLE = [
   { min: new Decimal(20000), max: new Decimal(200000000), rate: new Decimal(0.011)}
 ]
 
+
 export const load = (async ({ platform, fetch }) => {
   let api_key = platform?.env?.SERPAPI_KEY;
   if (!api_key) {
     return {
-      fx: "missing_api_key"
+      fxRates: "missing_api_key",
+      feeTable: {
+        [FiatCurrency.EUR]: decimalToStringTable(EUR_TABLE),
+      }
     }
   }
   // let eurCop = await getJson("google_finance", {
@@ -34,8 +39,8 @@ export const load = (async ({ platform, fetch }) => {
       "EUR-COP": eurCopRate,
     },
     feeTable: {
-      [FiatCurrency.EUR]: EUR_TABLE,
-      [FiatCurrency.COP]: copTable,
+      [FiatCurrency.EUR]: decimalToStringTable(EUR_TABLE),
+      [FiatCurrency.COP]: decimalToStringTable(copTable),
     }
   };
 }) satisfies PageServerLoad;

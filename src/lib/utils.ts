@@ -1,3 +1,5 @@
+import { Decimal } from "decimal.js"
+
 export function humanReadable(date: Date) {
   const year = date.getFullYear();
 
@@ -28,4 +30,12 @@ export function clickOutside(node: HTMLElement): { destroy: () => void } {
       document.removeEventListener('click', handleClick, true);
     }
   };
+}
+
+export function decimalToStringTable(table: FeeRateRange[]): FeeRateRangeString[] {
+  return table.map(({ min, max, rate }) => ({ min: min.toString(), max: max.toString(), rate: rate.toString() }))
+}
+
+export function stringToDecimalTable(table: FeeRateRangeString[]): FeeRateRange[] {
+  return table.map(({ min, max, rate }) => ({ min: new Decimal(min), max: new Decimal(max), rate: new Decimal(rate) }))
 }

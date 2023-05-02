@@ -2,11 +2,11 @@
   import type { PageData } from "./$types";
   import { FiatCurrency, FxDirection } from "$lib/types";
   import { Decimal } from "decimal.js";
+  import { stringToDecimalTable } from "$lib/utils"
 
   import Nav from "$lib/Nav.svelte";
   import Contact from "$lib/Contact.svelte";
   import CurrencyDropdown from "$lib/CurrencyDropdown.svelte";
-  import { goto } from "$app/navigation";
   export let data: PageData;
   let inputAmount = 0;
   let inputCurrency = FiatCurrency.COP;
@@ -37,15 +37,15 @@
 
   function modifyInput() {
     const { value, direction } = fxRate;
-    const feeTable = data.feeTable?.[inputCurrency];
-    console.log(feeTable)
+    let feeTableString = data.feeTable?.[inputCurrency];
     // somehow an empty field gives a value of empty string.
     if (inputAmount == "") return;
     let inputAmountDec = new Decimal(inputAmount);
-    if (feeTable === undefined) {
+    if (feeTableString === undefined) {
       outputAmount = (direction == FxDirection.Multiply) ? inputAmountDec.mul(value).toDecimalPlaces(2).toNumber() : inputAmountDec.div(value).toDecimalPlaces(2).toNumber()
       return
     }
+    let feeTable = stringToDecimalTable(feeTableString);
     let feeRange = feeTable.find(({min, max}) => inputAmountDec >= min && inputAmountDec <= max)
     if (feeRange === undefined) {
       outputAmount = (direction == FxDirection.Multiply) ? inputAmountDec.mul(value).toDecimalPlaces(2).toNumber() : inputAmountDec.div(value).toDecimalPlaces(2).toNumber()
@@ -58,16 +58,16 @@
 
   function modifyOutput() {
     const { value, direction } = fxRate;
-    const feeTable = data.feeTable?.[inputCurrency];
-    console.log(feeTable)
+    const feeTableString = data.feeTable?.[inputCurrency];
     // somehow an empty field gives a value of empty string.
     if (outputAmount == "") return;
     let outputAmountDec = new Decimal(outputAmount);
     let preConversion = (direction == FxDirection.Multiply) ? outputAmountDec.div(value) : outputAmountDec.mul(value);
-    if (feeTable === undefined) {
+    if (feeTableString === undefined) {
       inputAmount = preConversion.toNumber()
       return
     }
+    let feeTable = stringToDecimalTable(feeTableString);
     let initialFeeRange = feeTable.find(({min, max}) => preConversion >= min && preConversion <= max)
     if (initialFeeRange === undefined) {
       inputAmount = preConversion.toNumber()
@@ -241,36 +241,32 @@
                   </svg>
                 {:else}
                   <svg
-                    width="800px"
-                    height="800px"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-5 text-gray-400"
+                    stroke="currentColor"
                   >
                     <path
                       d="M7 12H17"
-                      stroke="#323232"
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     />
                     <path
                       d="M12 8.01001L12 8.00001"
-                      stroke="#323232"
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     />
                     <path
                       d="M12 16.01L12 16"
-                      stroke="#323232"
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     />
                     <path
                       d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                      stroke="#323232"
                       stroke-width="2"
                     />
                   </svg>
