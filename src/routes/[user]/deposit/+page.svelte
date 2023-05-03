@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import { StableCoin, FiatCurrency } from "$lib/types";
+  import { BANKS } from "$lib/constants"
 
   import UserNav from "$lib/UserNav.svelte";
   import Calculator from "$lib/Calculator.svelte";
@@ -78,8 +79,9 @@
                   autocomplete="bankAccount"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                  <option value="bancolombia">Bancolombia</option>
-                  <option value="bancolombia">Bancolombia</option>
+                  {#each BANKS as bank}
+                    <option> {bank}</option>
+                  {/each}
                 </select>
               </div>
             </div>
