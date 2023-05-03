@@ -2,9 +2,10 @@ import type { PageServerLoad } from './$types';
 import { FiatCurrency } from '$lib/types';
 import { decimalToStringTable } from '$lib/utils';
 import { EUR_FEE_TABLE } from "$lib/constants";
+import { wrapServerLoadWithSentry } from '@sentry/sveltekit';
 // import { getJson } from "serpapi";
 
-export const load = (async ({ platform, fetch }) => {
+export const load = wrapServerLoadWithSentry(async ({ platform, fetch }) => {
   let api_key = platform?.env?.SERPAPI_KEY;
   if (!api_key) {
     return {

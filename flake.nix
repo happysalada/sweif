@@ -35,6 +35,10 @@
               name = "PUBLIC_SURREAL_DATABASE";
               value = "sweif";
             }
+            {
+              name = "PUBLIC_SENTRY_DSN";
+              value = "";
+            }
           ];
           commands = [
             {
