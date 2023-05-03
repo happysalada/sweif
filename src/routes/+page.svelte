@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
+  import { FiatCurrency } from "$lib/types";
 
   import Nav from "$lib/Nav.svelte";
   import Contact from "$lib/Contact.svelte";
@@ -67,7 +68,14 @@
           >
         </div>
       </div>
-      <Calculator fxRates={data.fxRates} allFees={data.feeTable} />
+      <Calculator
+        fxRates={data.fxRates}
+        allFees={data.feeTable}
+        inputCurrencies={[FiatCurrency.COP, FiatCurrency.EUR]}
+        inputCurrency={FiatCurrency.COP}
+        outputCurrencies={[FiatCurrency.COP, FiatCurrency.EUR]}
+        outputCurrency={FiatCurrency.EUR}
+      />
     </div>
   </div>
 </div>

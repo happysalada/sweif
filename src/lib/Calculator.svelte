@@ -7,11 +7,13 @@
 
   export let fxRates: undefined | { "EUR-COP": number };
   export let allFees: undefined | { [FiatCurrency.COP]: FeeRateRangeString[], [FiatCurrency.EUR]: FeeRateRangeString[]};
+  export let inputCurrencies: Currency[];
+  export let outputCurrencies: Currency[];
+  export let inputCurrency: Currency;
+  export let outputCurrency: Currency;
 
   let inputAmount = 0;
-  let inputCurrency = FiatCurrency.COP;
   let outputAmount: number;
-  let outputCurrency = FiatCurrency.EUR;
   let fee = 0;
   $: fxRate = getFxRate(inputCurrency, outputCurrency);
 
@@ -148,7 +150,7 @@
             on:input={modifyInput}
           />
           <CurrencyDropdown
-            currencies={Object.keys(FiatCurrency)}
+            currencies={inputCurrencies}
             bind:selected={inputCurrency}
           />
         </div>
@@ -280,7 +282,7 @@
             on:input={modifyOutput}
           />
           <CurrencyDropdown
-            currencies={Object.keys(FiatCurrency)}
+            currencies={outputCurrencies}
             bind:selected={outputCurrency}
           />
         </div>

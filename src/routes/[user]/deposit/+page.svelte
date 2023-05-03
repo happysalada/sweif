@@ -1,12 +1,11 @@
 <script lang="ts">
   import type { PageData } from "./$types";
+  import { StableCoin, FiatCurrency } from "$lib/types";
 
   import UserNav from "$lib/UserNav.svelte";
   import Calculator from "$lib/Calculator.svelte";
 
   export let data: PageData;
-
-  let showModal = false;
 </script>
 
 <UserNav />
@@ -96,7 +95,14 @@
           Calculator
         </dt>
         <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-          <Calculator fxRates={data.fxRates} allFees={undefined}/>
+          <Calculator
+            fxRates={data.fxRates}
+            allFees={undefined}
+            inputCurrency={FiatCurrency.COP}
+            inputCurrencies={[FiatCurrency.COP]}
+            outputCurrency={StableCoin.EURC}
+            outputCurrencies={[StableCoin.EURC]}
+          />
         </dd>
       </div>
 
