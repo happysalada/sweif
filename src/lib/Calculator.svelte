@@ -7,12 +7,13 @@
 
   export let fxRates: undefined | { "EUR-COP": number } | {  "EURC-COP": number };
   export let allFees: undefined | { [FiatCurrency.COP]: FeeRateRangeString[], [FiatCurrency.EUR]: FeeRateRangeString[]};
+  export let inputAmount = 0;
   export let inputCurrencies: Currency[];
   export let outputCurrencies: Currency[];
   export let inputCurrency: Currency;
   export let outputCurrency: Currency;
+  export let disclaimer = false;
 
-  let inputAmount = 0;
   let outputAmount: number;
   let fee = 0;
   $: fxRate = getFxRate(inputCurrency, outputCurrency);
@@ -152,6 +153,8 @@
           <CurrencyDropdown
             currencies={inputCurrencies}
             bind:selected={inputCurrency}
+            bind:inputAmount
+            bind:outputAmount
           />
         </div>
       </div>
@@ -284,9 +287,16 @@
           <CurrencyDropdown
             currencies={outputCurrencies}
             bind:selected={outputCurrency}
+            bind:inputAmount
+            bind:outputAmount
           />
         </div>
       </div>
+      {#if disclaimer}
+      <p class="px-6 pt-2 flex-auto text-xs text-gray-500">
+        Para retirar el dinero en tu cuenta bancaria en España debes registrar la cuenta bancaria en el botón RETIRAR y seleccionar el valor en euros a retirar directo a la cuenta bancaria en España.
+      </p>
+      {/if}
     </div>
   </div>
 </div>

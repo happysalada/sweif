@@ -7,6 +7,8 @@
   import Eur from "./CurrencyDropdown/EUR.svelte";
   import EurC from "./CurrencyDropdown/EURC.svelte";
 
+  export let inputAmount;
+  export let outputAmount;
   let dropdownOpen = false;
 </script>
 
@@ -83,6 +85,8 @@
           on:click={() => {
             selected = currency;
             dropdownOpen = false;
+            inputAmount = 0;
+            outputAmount = 0;
           }}
         >
           <div class="flex items-center">

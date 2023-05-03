@@ -6,6 +6,8 @@
   import Calculator from "$lib/Calculator.svelte";
 
   export let data: PageData;
+  let inputAmount = 0;
+  let inputCurrency = FiatCurrency.COP
 </script>
 
 <UserNav />
@@ -30,10 +32,12 @@
           <Calculator
             fxRates={data.fxRates}
             allFees={undefined}
-            inputCurrency={FiatCurrency.COP}
+            bind:inputAmount
+            bind:inputCurrency
             inputCurrencies={[FiatCurrency.COP]}
             outputCurrency={StableCoin.EURC}
             outputCurrencies={[StableCoin.EURC]}
+            disclaimer={true}
           />
         </dd>
       </div>
@@ -41,25 +45,21 @@
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-900">Transfiere</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          1000
-        </dd>
-      </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900">NIT</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          901617634-7
-        </dd>
-      </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900">Número de cuenta</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          19300001303
+          {inputAmount} {inputCurrency}
         </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-900">Descripción</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          Por favor consignar el valor a recargar en la siguiente cuenta bancaria. Una vez hecha la transacción, por favor ingresar en el siguiente recuadro el valor enviado y subir adjuntar el comprobante de la transacción.
+          Por favor consignar el valor a recargar en la siguiente cuenta bancaria. Una vez hecha la transacción, por favor ingresar en el siguiente recuadro los últimos 4 digitos de tu número de cuenta y seleccionar el nombre del banco desde donde hiciste la transacción.
+        </dd>
+        <dt class="text-sm font-medium text-gray-900 text-right">NIT</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          901617634-7
+        </dd>
+        <dt class="text-sm font-medium text-gray-900 text-right">Número de cuenta</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          19300001303
         </dd>
       </div>
 
@@ -78,7 +78,8 @@
                   autocomplete="bankAccount"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                  <option value="CO">Bancolombia</option>
+                  <option value="bancolombia">Bancolombia</option>
+                  <option value="bancolombia">Bancolombia</option>
                 </select>
               </div>
             </div>
@@ -114,7 +115,7 @@
           <button
             type="button"
             class="rounded-md bg-primary-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-            >Submit</button
+            >Enviado</button
           >
         </dd>
       </div>
