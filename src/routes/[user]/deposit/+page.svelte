@@ -21,10 +21,27 @@
   </div>
   <div class="border-t border-gray-100">
     <dl class="divide-y divide-gray-100">
+
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900">Name</dt>
+        <dt class="text-sm font-medium leading-6 text-gray-900">
+          Calculator
+        </dt>
+        <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+          <Calculator
+            fxRates={data.fxRates}
+            allFees={undefined}
+            inputCurrency={FiatCurrency.COP}
+            inputCurrencies={[FiatCurrency.COP]}
+            outputCurrency={StableCoin.EURC}
+            outputCurrencies={[StableCoin.EURC]}
+          />
+        </dd>
+      </div>
+
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-900">Transfiere</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          Bitval Colombia SAS
+          1000
         </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -90,21 +107,6 @@
         </dd>
       </div>
 
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium leading-6 text-gray-900">
-          Calculator
-        </dt>
-        <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-          <Calculator
-            fxRates={data.fxRates}
-            allFees={undefined}
-            inputCurrency={FiatCurrency.COP}
-            inputCurrencies={[FiatCurrency.COP]}
-            outputCurrency={StableCoin.EURC}
-            outputCurrencies={[StableCoin.EURC]}
-          />
-        </dd>
-      </div>
 
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium leading-6 text-gray-900">Monto transfeirdo a cuenta Bitval</dt>
