@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { user } from "$lib/../stores";
+	import { user } from "$lib/stores";
 	import { goto } from "$app/navigation";
 	import Surreal from "surrealdb.js";
 	import { PUBLIC_SURREAL_URL } from "$env/static/public";
