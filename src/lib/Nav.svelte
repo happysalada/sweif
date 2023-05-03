@@ -64,10 +64,10 @@
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
 			{#if $user?.email}
-				<button
+				<a
+					href={`/${$user.email}/dashboard`}
 					class="text-sm font-semibold leading-6 text-gray-900"
-					on:click={signout}
-					>Sign out <span aria-hidden="true">&rarr;</span></button
+					>Cuenta Sweif <span aria-hidden="true">&rarr;</span></a
 				>
 			{:else}
 				<a href="/signin" class="text-sm font-semibold leading-6 text-gray-900"

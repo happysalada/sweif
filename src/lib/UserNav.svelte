@@ -1,10 +1,13 @@
+<script lang="ts">
+	import { user } from "$lib/stores";
+</script>
 <div class="h-full bg-gray-800 p-6">
   <div class="lg:flex lg:items-center lg:justify-between">
     <div class="min-w-0 flex-1">
       <h2
         class="text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight"
       >
-        Hola Mateo
+        Hola {"Mateo"}
       </h2>
       <div
         class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6"
@@ -20,10 +23,6 @@
         <span
           class="mt-4 inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-sm font-medium text-green-800"
           >EURC €0</span
-        >
-        <span
-          class="mt-4 inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-sm font-medium text-green-800"
-          >USDC $0</span
         >
       </div>
     </div>

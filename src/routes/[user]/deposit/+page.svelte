@@ -48,7 +48,7 @@
 
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium leading-6 text-gray-900">
-          Bank name
+          Nombre de tu banco
         </dt>
         <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
           <div class="flex justify-start gap-8">
@@ -70,7 +70,7 @@
         </dd>
 
         <dt class="text-sm font-medium leading-6 text-gray-900">
-          Last 4 digits
+          Últimos cuatro digitos de tu cuenta
         </dt>
         <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
           <div class="flex justify-start gap-8">

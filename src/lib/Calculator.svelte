@@ -5,7 +5,7 @@
 
   import CurrencyDropdown from "$lib/CurrencyDropdown.svelte";
 
-  export let fxRates: undefined | { "EUR-COP": number };
+  export let fxRates: undefined | { "EUR-COP": number } | {  "EURC-COP": number };
   export let allFees: undefined | { [FiatCurrency.COP]: FeeRateRangeString[], [FiatCurrency.EUR]: FeeRateRangeString[]};
   export let inputCurrencies: Currency[];
   export let outputCurrencies: Currency[];
@@ -137,7 +137,7 @@
         <label
           for="account-number"
           class="block text-sm font-medium leading-6 text-gray-900"
-          >You send</label
+          >Tú envias</label
         >
         <div class="mt-2 rounded-md shadow-sm flex gap-x-4">
           <input
@@ -180,7 +180,7 @@
               {inputCurrency}
             </p>
           </dd>
-          <dt class="text-sm text-gray-500 leading-6">Transfer fee</dt>
+          <dt class="text-sm text-gray-500 leading-6">Costo de envío</dt>
         </div>
       {/if}
       <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
@@ -261,7 +261,7 @@
             {fxRate.value.toFixed(2)}
           </p>
         </dd>
-        <dt class="text-sm leading-6 text-gray-500">Guaranteed rate for 24h</dt>
+        <dt class="text-sm leading-6 text-gray-500">Tasa de cambio</dt>
       </div>
     </dl>
     <div class="mt-6 border-t border-gray-900/5 pb-6">
@@ -269,7 +269,7 @@
         <label
           for="account-number"
           class="block text-sm font-medium leading-6 text-gray-900"
-          >They receive</label
+          >Recibe</label
         >
         <div class="mt-2 rounded-md shadow-sm flex gap-x-4">
           <input
