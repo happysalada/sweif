@@ -202,6 +202,15 @@
             </div>
           </dl>
         </div>
+
+        <div class="w-full ml-12 mt-12">
+          <a
+            href="/signin"
+            class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+            >Crea tu cuenta</a
+          >
+        </div>
+
       </div>
 
       <div class="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow">

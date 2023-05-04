@@ -111,14 +111,14 @@
 			{#if signinOrUp == SignInUp.Signin}
 				<button
 					type="button"
-					class="font-medium text-primary-600 hover:text-primary-500"
+					class="font-medium text-primary-600 hover:text-primary-500 text-xl"
 					on:click={() => (signinOrUp = SignInUp.Signup)}
 					>Crea una cuenta</button
 				>
 			{:else}
 				<button
 					type="button"
-					class="font-medium text-primary-600 hover:text-primary-500"
+					class="font-medium text-primary-600 hover:text-primary-500 text-xl"
 					on:click={() => (signinOrUp = SignInUp.Signin)}
 					>Inicio de sesión</button
 				>
