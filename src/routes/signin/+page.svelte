@@ -19,7 +19,6 @@
 		Signin,
 		Signup,
 	}
-	let signinOrUp = SignInUp.Sig;
 	let signinOrUp = SignInUp.Signup;
 	let email: string;
 	let password: string;
