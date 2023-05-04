@@ -130,22 +130,22 @@
   }
 </script>
 
-<div class="max-w-sm">
+<div class="max-w-xs mt-6">
   <h2 class="sr-only">Summary</h2>
   <div class="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
     <dl class="flex flex-wrap">
-      <div class="px-6 pt-6 flex-auto">
+      <div class="px-6 pt-6 w-full">
         <label
           for="account-number"
           class="block text-sm font-medium leading-6 text-gray-900"
           >Tú envias</label
         >
-        <div class="mt-2 rounded-md shadow-sm flex gap-x-4">
+        <div class="mt-2 rounded-md shadow-sm flex justify-between w-full">
           <input
             type="text"
             name="inputAmount"
             id="inputAmount"
-            class="rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            class="rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-24 sm:w-36"
             placeholder="1,000"
             bind:value={inputAmount}
             on:input={modifyInput}
@@ -161,9 +161,9 @@
 
       {#if fee != 0}
         <div
-          class="mt-6 flex w-full flex-wrap gap-x-4 border-t border-gray-900/5 px-6 pt-6"
+          class="mt-6 flex w-full flex-wrap border-t border-gray-900/5 px-6 pt-6 justify-between"
         >
-          <dd class="flex flex-auto">
+          <dd class="flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -186,9 +186,9 @@
           <dt class="text-sm text-gray-500 leading-6">Costo de envío</dt>
         </div>
       {/if}
-      <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
-        <dt class="flex flex-auto">
-          <span class="sr-only">Total we convert</span>
+      <div class="mt-4 flex w-full px-6 justify-between">
+        <dt class="flex">
+          <span class="sr-only">Total a convertir</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -210,8 +210,8 @@
         </dt>
         <dt class="text-sm leading-6 text-gray-500">Total we will convert</dt>
       </div>
-      <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
-        <dd class="flex flex-auto">
+      <div class="mt-4 flex w-full px-6 justify-between">
+        <dd class="flex">
           <span class="sr-only">Fx rate</span>
           {#if fxRate.direction == FxDirection.Multiply}
             <svg
@@ -268,18 +268,18 @@
       </div>
     </dl>
     <div class="mt-6 border-t border-gray-900/5 pb-6">
-      <div class="px-6 pt-6 flex-auto">
+      <div class="px-6 pt-6 w-full">
         <label
           for="account-number"
           class="block text-sm font-medium leading-6 text-gray-900"
           >Recibe</label
         >
-        <div class="mt-2 rounded-md shadow-sm flex gap-x-4">
+        <div class="mt-2 rounded-md shadow-sm flex justify-between">
           <input
             type="text"
             name="outputAmount"
             id="outputAmount"
-            class="rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            class="rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-24 sm:w-36"
             placeholder="1,000"
             bind:value={outputAmount}
             on:input={modifyOutput}
@@ -293,7 +293,7 @@
         </div>
       </div>
       {#if disclaimer}
-      <p class="px-6 pt-2 flex-auto text-xs text-gray-500">
+      <p class="px-6 pt-2 text-xs text-gray-500">
         Para retirar el dinero en tu cuenta bancaria en España debes registrar la cuenta bancaria en el botón RETIRAR y seleccionar el valor en euros a retirar directo a la cuenta bancaria en España.
       </p>
       {/if}

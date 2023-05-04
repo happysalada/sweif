@@ -13,11 +13,11 @@
 </script>
 
 <div
-  class="flex items-center mr-3 w-full"
+  class="flex items-center"
   use:clickOutside
   on:outclick={() => (dropdownOpen = false)}
 >
-  <div class="relative w-full">
+  <div class="relative">
     <button
       type="button"
       class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
