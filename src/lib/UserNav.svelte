@@ -31,7 +31,7 @@
       class="m-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0"
     >
       <a
-        href="/nicolas/deposit"
+        href={`/${$user?.email || "nico"}/deposit`}
         class="inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
       >
         <svg
@@ -52,8 +52,8 @@
         <span>Recargar</span>
       </a>
 
-      <button
-        type="button"
+      <a
+        href={`/${$user?.email || "nico"}/convert`}
         class="inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
       >
         <svg
@@ -71,7 +71,7 @@
           />
         </svg>
         <span>Convertir</span>
-      </button>
+      </a>
 
       <!--
       <button
@@ -98,7 +98,7 @@
       -->
 
       <a
-        href="/nicolas/withdrawal"
+        href={`/${$user?.email || "nico"}/withdraw`}
         class="inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
       >
         <svg

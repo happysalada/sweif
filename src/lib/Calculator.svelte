@@ -5,8 +5,8 @@
 
   import CurrencyDropdown from "$lib/CurrencyDropdown.svelte";
 
-  export let fxRates: undefined | { "EUR-COP": number } | {  "EURC-COP": number };
-  export let allFees: undefined | { [FiatCurrency.COP]: FeeRateRangeString[], [FiatCurrency.EUR]: FeeRateRangeString[]};
+  export let fxRates: RawFxRates;
+  export let allFees: RawFees;
   export let inputAmount = 0;
   export let inputCurrencies: Currency[];
   export let outputCurrencies: Currency[];
@@ -140,7 +140,7 @@
           class="block text-sm font-medium leading-6 text-gray-900"
           >Tú envias</label
         >
-        <div class="mt-2 rounded-md shadow-sm flex justify-between w-full">
+        <div class="mt-2 rounded-md shadow-sm flex justify-between">
           <input
             type="text"
             name="inputAmount"

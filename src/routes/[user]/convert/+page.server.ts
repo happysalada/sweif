@@ -6,12 +6,13 @@ export const load = (async ({ platform, fetch }) => {
     return {
     }
   }
-  let rateResponse = await fetch(`https://serpapi.com/search?engine=google_finance&q=${"EUR-COP"}&api_key=${api_key}`)
+  let rateResponse = await fetch(`https://serpapi.com/search?engine=google_finance&q=${"EUR-USD"}&api_key=${api_key}`)
   let rate = await rateResponse.json();
   let rateNumber: number = rate.summary?.extracted_price;
   return {
     fxRates: {
-      "EURC-COP": rateNumber,
+      "EURC-USDC": rateNumber,
+      "EURC-USDT": rateNumber,
     },
   };
 }) satisfies PageServerLoad;

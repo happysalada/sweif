@@ -6,6 +6,7 @@
   import Cop from "./CurrencyDropdown/COP.svelte";
   import Eur from "./CurrencyDropdown/EUR.svelte";
   import EurC from "./CurrencyDropdown/EURC.svelte";
+  import UsdT from "./CurrencyDropdown/USDT.svelte";
 
   export let inputAmount;
   export let outputAmount;
@@ -33,6 +34,8 @@
           <Eur />
         {:else if selected == StableCoin.EURC}
           <EurC />
+        {:else if selected == StableCoin.USDT}
+          <UsdT />
         {/if}
       </span>
       <span
@@ -89,13 +92,15 @@
             outputAmount = 0;
           }}
         >
-          <div class="flex items-center">
+          <div class="flex items-center w-full">
             {#if currency == FiatCurrency.COP}
               <Cop />
             {:else if currency == FiatCurrency.EUR}
               <Eur />
             {:else if currency == StableCoin.EURC}
               <EurC />
+            {:else if selected == StableCoin.USDT}
+              <UsdT />
             {/if}
           </div>
         </li>
