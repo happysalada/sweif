@@ -2,10 +2,10 @@
   import UserNav from "$lib/UserNav.svelte";
   import NewBankAccountModal from "$lib/NewBankAccountModal.svelte";
 
-  let showModal = false;
+  let showModal = true;
 </script>
 
-<NewBankAccountModal {showModal} />
+<NewBankAccountModal bind:showModal />
 
 <UserNav />
 
