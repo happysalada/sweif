@@ -35,7 +35,7 @@
                 <th
                   scope="col"
                   class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >IBAN</th
+                  >Last 4 digits</th
                 >
                 <th
                   scope="col"
@@ -60,7 +60,7 @@
                   >Lindsay Walton</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >ES9121000418450200051332</td
+                  >1332</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                   >COP $1,000,000.00</td
