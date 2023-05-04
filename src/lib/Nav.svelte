@@ -70,7 +70,7 @@
 					>Cuenta Sweif <span aria-hidden="true">&rarr;</span></a
 				>
 			{:else}
-				<a href="/signin" class="text-sm font-semibold leading-6 text-gray-900"
+				<a href="/signin" class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
 					>Log in <span aria-hidden="true">&rarr;</span></a
 				>
 			{/if}
@@ -89,13 +89,9 @@
 			class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
 		>
 			<div class="flex items-center justify-between">
-				<a href="#" class="-m-1.5 p-1.5">
-					<span class="sr-only">Your Company</span>
-					<img
-						class="h-8 w-auto"
-						src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-						alt=""
-					/>
+				<a href="/" class="-m-1.5 p-1.5">
+					<span class="sr-only">Sweif</span>
+					<Logo classes="h-12 w-20 rounded-lg" />
 				</a>
 				<button
 					type="button"

@@ -6,7 +6,6 @@
   import Contact from "$lib/Contact.svelte";
   import Calculator from "$lib/Calculator.svelte";
   export let data: PageData;
-
 </script>
 
 <Nav />
@@ -68,14 +67,21 @@
           >
         </div>
       </div>
-      <Calculator
-        fxRates={data.fxRates}
-        allFees={data.feeTable}
-        inputCurrencies={[FiatCurrency.COP, FiatCurrency.EUR]}
-        inputCurrency={FiatCurrency.COP}
-        outputCurrencies={[FiatCurrency.COP, FiatCurrency.EUR]}
-        outputCurrency={FiatCurrency.EUR}
-      />
+      <div class="flex flex-col justify-center items-center text-center">
+        <Calculator
+          fxRates={data.fxRates}
+          allFees={data.feeTable}
+          inputCurrencies={[FiatCurrency.COP, FiatCurrency.EUR]}
+          inputCurrency={FiatCurrency.COP}
+          outputCurrencies={[FiatCurrency.COP, FiatCurrency.EUR]}
+          outputCurrency={FiatCurrency.EUR}
+        />
+        <a
+          href="/signin"
+          class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 mt-6 w-72 sm:w-80"
+          >Crea tu cuenta</a
+        >
+      </div>
     </div>
   </div>
 </div>
