@@ -13,7 +13,6 @@
   export let outputAmount = 0;
   export let outputCurrency: Currency;
   export let outputCurrencies: Currency[];
-  export let disclaimer = false;
 
   let fee = 0;
   $: fxRate = getFxRate(inputCurrency, outputCurrency);
@@ -281,11 +280,6 @@
           />
         </div>
       </div>
-      {#if disclaimer}
-      <p class="px-6 pt-2 text-xs text-gray-500">
-        Para retirar el dinero en tu cuenta bancaria en España debes registrar la cuenta bancaria en el botón RETIRAR y seleccionar el valor en euros a retirar directo a la cuenta bancaria en España.
-      </p>
-      {/if}
     </div>
   </div>
 </div>

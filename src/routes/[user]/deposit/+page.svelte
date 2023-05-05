@@ -42,7 +42,6 @@
     bind:outputAmount
     bind:outputCurrency
     outputCurrencies={[StableCoin.EURC]}
-    disclaimer={true}
   />
   <button
     type="button"

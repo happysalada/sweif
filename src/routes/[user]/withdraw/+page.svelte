@@ -105,7 +105,6 @@
       bind:outputAmount
       {outputCurrency}
       outputCurrencies={[outputCurrency]}
-      disclaimer={false}
     />
     <button
       type="button"
