@@ -48,11 +48,11 @@
         <h1
           class="mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
         >
-          Tu cuenta de dinero digital sin fronteras
-        </h1>
-        <p class="mt-6 text-lg leading-8 text-gray-600">
           Convierte tu dinero a monedas estables en el app y retiralo en la
           cuenta bancaria que quieras!
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Tu cuenta de dinero digital sin fronteras
         </p>
         <div class="mt-10 flex items-center gap-x-6">
           <a
