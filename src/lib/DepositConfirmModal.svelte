@@ -112,7 +112,11 @@
                 Transferencia Bancaria
               </h3>
               <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-                Para recargar tu billetera sweif envia una transferencia bancaria a la cuenta Bancolombia de Bitva Colombia SAS y completa los espacios inferiores. Una vez que el dinero ingrese a la cuenta se vera reflejado en tu cuenta sweif.
+                {#if state == State.Transfer}
+                  Por favor consignar el monto indicado en Transfiere a la siguiente cuenta bancaria de Bitval Colombia SAS. Cuando hayas hecho la transferencia hacer click en el botón enviado. Una vez que el dinero ingrese a la cuenta verás reflejado tu saldo en tu cuenta sweif.
+                {:else if state == State.ConfirmDetails}
+                  Indica el nombre del banco desde el cual hiciste la transferencia y los últimos 4 dígitos de tu cuenta para poder verificar la proveniencia de la transacción.
+                {/if}
               </p>
             </div>
             <div class="border-t border-gray-100">
@@ -125,10 +129,6 @@
                   </dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt class="text-sm font-medium text-gray-900">Descripción</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    Por favor consignar el valor a recargar en la siguiente cuenta bancaria. Una vez hecha la transacción, por favor ingresar en el siguiente recuadro los últimos 4 digitos de tu número de cuenta y seleccionar el nombre del banco desde donde hiciste la transacción.
-                  </dd>
                   <dt class="text-sm font-medium text-gray-900 text-right">NIT</dt>
                   <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     901617634-7

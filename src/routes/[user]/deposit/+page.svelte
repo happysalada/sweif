@@ -19,6 +19,20 @@
 <DepositConfirmModal bind:showModal bind:inputAmount {inputCurrency} bind:outputAmount {outputCurrency} />
 
 <div class="w-full flex flex-col justify-center items-center">
+
+  <div class="px-4 py-6 sm:px-6">
+    <h3 class="text-base font-semibold leading-7 text-gray-900">
+      Instrucciones:
+    </h3>
+    <p class="mt-1 max-w-xs sm:max-w-sm text-sm leading-6 text-gray-500">
+      Puedes transferir dinero entre países en tan solo 2 pasos:
+      <br>
+      1. Recargar: Recarga tu billetera sweif directamente desde tu cuenta bancaria siguiendo los pasos de recarga.
+      <br>
+      2. Retirar: Registra la cuenta a la que envías el dinero y retira tu saldo sweif en el país que elijas.
+    </p>
+  </div>
+
   <Calculator
     fxRates={data.fxRates}
     allFees={undefined}
