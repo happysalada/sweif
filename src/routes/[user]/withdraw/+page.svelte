@@ -106,12 +106,10 @@
     />
     <button
       type="button"
-      disabled={inputAmount == 0 || inputAmount == "" || $balances[inputCurrency].lt(amount)}
+      disabled={inputAmount == 0 || inputAmount == "" || $balances[inputCurrency].lt(inputAmount)}
       on:click={() => {
-        let amount = new Decimal(inputAmount);
         // amount being zero or more than balance is taken care of by the disabled property
-
-        $balances[inputCurrency] = $balances[inputCurrency].minus(amount);
+        $balances[inputCurrency] = $balances[inputCurrency].minus(inputAmount);
         goto(`/${$user?.email || 'nico'}/dashboard`);
       }}
       class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 mt-6 w-80"
