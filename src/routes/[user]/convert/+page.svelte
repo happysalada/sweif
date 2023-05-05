@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { Decimal } from "decimal.js";
+
   import type { PageData } from "./$types";
 	import { goto } from "$app/navigation";
 
@@ -33,11 +35,11 @@
   />
   <button
     type="button"
-    disabled={inputAmount == 0 || inputAmount == "" || $balances[inputCurrency].lt(inputAmount)}
+    disabled={inputAmount == 0 || inputAmount == "" || (new Decimal($balances[inputCurrency])).lt(inputAmount)}
     on:click={() => {
       // inputAmount being zero or more than balance is taken care of by the disabled property
-      $balances[inputCurrency] = $balances[inputCurrency].minus(inputAmount);
-      $balances[outputCurrency] = $balances[outputCurrency].plus(outputAmount);
+      $balances[inputCurrency] = (new Decimal($balances[inputCurrency])).minus(inputAmount);
+      $balances[outputCurrency] = (new Decimal($balances[outputCurrency])).plus(outputAmount);
 
       $transactions = [...$transactions, {type: "conversion", inputAmount, inputCurrency, outputAmount, outputCurrency, at: new Date()}]
 

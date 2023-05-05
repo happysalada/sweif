@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { Decimal } from "decimal.js";
+
   import { monthNames, humanReadableDate } from "$lib/utils";
   import { transactions } from "$lib/stores";
 
@@ -9,7 +11,10 @@
 
 <div class="flow-root m-8 w-3/4 mx-auto">
   <ul class="-mb-8">
-    {#each $transactions.reverse() as {type, inputAmount, inputCurrency, outputAmount, outputCurrency, at}}
+    {#each $transactions.reverse() as {type, inputAmount: stringInputAmount, inputCurrency, outputAmount: stringOutputAmount, outputCurrency, at: stringAt}}
+    {@const at = new Date(stringAt)}
+    {@const inputAmount = new Decimal(stringInputAmount)}
+    {@const outputAmount = new Decimal(stringOutputAmount)}
     {#if type == "deposit"}
     <li>
       <div class="relative pb-8">

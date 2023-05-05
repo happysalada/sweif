@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { Decimal } from "decimal.js";
+
 	import { goto } from "$app/navigation";
 
   import { FiatCurrency, StableCoin } from "$lib/types";
@@ -25,7 +27,7 @@
   let state = State.SelectBankAccount;
   let inputAmount = 0;
   $: inputCurrencies = Object.entries($balances)
-        .filter(([_currency, balance]) => !balance.isZero())
+        .filter(([_currency, balance]) => !(new Decimal(balance)).isZero())
         .map(([currency, _balance]) => currency)
   $: inputCurrency = inputCurrencies[0] || StableCoin.EURC;
   let outputAmount = 0;
@@ -107,10 +109,10 @@
     />
     <button
       type="button"
-      disabled={inputAmount == 0 || inputAmount == "" || $balances[inputCurrency].lt(inputAmount)}
+      disabled={inputAmount == 0 || inputAmount == "" || (new Decimal($balances[inputCurrency])).lt(inputAmount)}
       on:click={() => {
         // amount being zero or more than balance is taken care of by the disabled property
-        $balances[inputCurrency] = $balances[inputCurrency].minus(inputAmount);
+        $balances[inputCurrency] = (new Decimal($balances[inputCurrency])).minus(inputAmount);
 
         $transactions = [...$transactions, {type: "withdrawal", inputAmount, inputCurrency, outputAmount, outputCurrency, at: new Date()}]
 

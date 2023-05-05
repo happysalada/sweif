@@ -14,8 +14,8 @@ const initialBalance = {
 export const user = persisted<User | null>('user', null);
 
 // make a copy of initial balance to not modify the initial variable
-export const balances = writable({...initialBalance})
+export const balances = persisted('balances', {...initialBalance})
 
-export const bankAccounts = writable<BankAccount[]>([])
+export const bankAccounts = persisted<BankAccount[]>('bankAcounts', [])
 
-export const transactions = writable<Transaction[]>([])
+export const transactions = persisted<Transaction[]>('transactions', [])

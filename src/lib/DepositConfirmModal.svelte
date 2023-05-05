@@ -201,7 +201,7 @@
                     on:click={() => {
                       let amount = new Decimal(outputAmount || 0);
                       if (amount.isZero()) return;
-                      $balances[outputCurrency] = $balances[outputCurrency].add(amount)
+                      $balances[outputCurrency] = (new Decimal($balances[outputCurrency])).add(amount)
                       showModal = false;
                       $transactions = [...$transactions, {type: "deposit", inputAmount, inputCurrency, outputAmount, outputCurrency, at: new Date()}]
                       inputAmount = 0;
