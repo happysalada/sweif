@@ -249,7 +249,7 @@
             </svg>
           {/if}
           <p class="pl-4 text-sm text-gray-500 leading-6">
-            {fxRate.value.toFixed(2)}
+            {fxRate.value.toFixed(2)} {fxRate.direction == FxDirection.Multiply ? `${inputCurrency}/${outputCurrency}` : `${outputCurrency}/${inputCurrency}`}
           </p>
         </dd>
         <dt class="text-sm leading-6 text-gray-500">Tasa de cambio</dt>
