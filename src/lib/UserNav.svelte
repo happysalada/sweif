@@ -3,7 +3,9 @@
 </script>
 <div class="h-full bg-gray-800 p-6">
   <div class="lg:flex lg:items-center lg:justify-between">
-    <div class="min-w-0 flex-1">
+    <a
+      href={`/${$user?.email || "nico"}/dashboard`}
+      class="min-w-0 flex-1">
       <h2
         class="text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight"
       >
@@ -21,7 +23,7 @@
           {/if}
         {/each}
       </div>
-    </div>
+    </a>
 
     <div
       class="m-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0"
