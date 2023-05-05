@@ -48,11 +48,10 @@
         <h1
           class="mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
         >
-          Convierte tu dinero a monedas estables en el app y retiralo en la
-          cuenta bancaria que quieras!
+          Transferencias internacionales rápidas, seguras y sin costos ocultos.
         </h1>
         <p class="mt-6 text-lg leading-8 text-gray-600">
-          Tu cuenta de dinero digital sin fronteras
+          Convierte tu dinero a monedas estables y retiralo en la cuenta bancaria que quieras en España o Colombia
         </p>
         <div class="mt-10 flex items-center gap-x-6">
           <a
