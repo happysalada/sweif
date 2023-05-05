@@ -104,11 +104,11 @@
               class="text-base font-semibold leading-6 text-gray-900"
               id="modal-title"
             >
-              Create a new bank account
+              Crea una nueva cuenta
             </h3>
             <div class="mt-2">
               <p class="text-sm text-gray-500">
-                Information to create the bank account
+                Digita la siguiente información para registrar una nueva cuenta
               </p>
             </div>
 
@@ -195,7 +195,7 @@
               <label
                 for="name"
                 class="block text-sm font-medium leading-6 text-gray-900"
-                >IBAN</label
+                >Número de cuenta, IBAN para cuenta en España</label
               >
               <div class="mt-2">
                 <input
@@ -214,7 +214,7 @@
               <label
                 for="name"
                 class="block text-sm font-medium leading-6 text-gray-900"
-                >Identificacion</label
+                >Identificación - NIE, Cedula o NIT</label
               >
               <div class="mt-2">
                 <input

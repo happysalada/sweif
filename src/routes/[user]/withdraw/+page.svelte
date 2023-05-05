@@ -43,19 +43,19 @@
         Bank details
       </h3>
       <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-        Choose the bank account and the amount for your withdrawal
+        Registra una cuenta o selecciona una ya registrada:
       </p>
     </div>
     <div class="border-t border-gray-100">
       <dl class="divide-y divide-gray-100">
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium leading-6 text-gray-900">
-            Bank account
+            Cuenta Bancaria
           </dt>
           <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
             <div class="flex justify-start gap-8">
               <div class="sm:col-span-2">
-                <label for="bankAccount" class="sr-only">Bank account</label>
+                <label for="bankAccount" class="sr-only">Cuenta Bancaria</label>
                 <div>
                   <select
                     id="bankAccountName"
@@ -75,7 +75,7 @@
                 type="button"
                 on:click={() => (showModal = true)}
                 class="rounded-md bg-primary-600 px-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-                >New account</button
+                >Registra una cuenta nueva</button
               >
             </div>
           </dd>
