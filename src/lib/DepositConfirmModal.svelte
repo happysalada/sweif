@@ -1,10 +1,16 @@
 <script lang="ts">
+  import { Decimal } from "decimal.js";
+	import { goto } from "$app/navigation";
+
   import { clickOutside } from "$lib/utils";
   import { BANKS } from "$lib/constants";
+  import { balances, user } from "$lib/stores";
 
   export let showModal = false;
   export let inputAmount: number;
   export let inputCurrency: Currency;
+  export let outputAmount: number;
+  export let outputCurrency: Currency;
 
   enum State {
     Transfer,
@@ -192,7 +198,15 @@
                 <div class="px-4 py-6 flex justify-center">
                   <button
                     type="button"
-                    on:click={() => (showModal = false)}
+                    on:click={() => {
+                      let amount = new Decimal(outputAmount || 0);
+                      if (amount.isZero()) return;
+                      $balances[outputCurrency] = $balances[outputCurrency].add(amount)
+                      showModal = false;
+                      inputAmount = 0;
+                      outputAmount = 0;
+                      goto(`/${$user?.email || 'nico'}/dashboard`);
+                    }}
                     class="rounded-md bg-primary-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 w-72"
                     >Confirmo</button
                   >

@@ -9,12 +9,12 @@
   export let allFees: RawFees;
   export let inputAmount = 0;
   export let inputCurrencies: Currency[];
-  export let outputCurrencies: Currency[];
   export let inputCurrency: Currency;
+  export let outputAmount = 0;
   export let outputCurrency: Currency;
+  export let outputCurrencies: Currency[];
   export let disclaimer = false;
 
-  let outputAmount: number;
   let fee = 0;
   $: fxRate = getFxRate(inputCurrency, outputCurrency);
 

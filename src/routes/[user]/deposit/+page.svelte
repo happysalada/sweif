@@ -10,12 +10,14 @@
   export let data: PageData;
   let inputAmount = 0;
   let inputCurrency = FiatCurrency.COP
+  let outputAmount = 0;
+  let outputCurrency = StableCoin.EURC
   let showModal = false;
 </script>
 
 <UserNav />
 
-<DepositConfirmModal bind:showModal {inputAmount} {inputCurrency} />
+<DepositConfirmModal bind:showModal bind:inputAmount {inputCurrency} bind:outputAmount {outputCurrency} />
 
 <div class="w-full flex flex-col justify-center items-center">
   <Calculator
@@ -24,7 +26,8 @@
     bind:inputAmount
     bind:inputCurrency
     inputCurrencies={[FiatCurrency.COP]}
-    outputCurrency={StableCoin.EURC}
+    bind:outputAmount
+    bind:outputCurrency
     outputCurrencies={[StableCoin.EURC]}
     disclaimer={true}
   />

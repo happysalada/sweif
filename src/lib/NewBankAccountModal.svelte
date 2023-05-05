@@ -1,10 +1,18 @@
 <script lang="ts">
+  import { bankAccounts } from "$lib/stores";
+  import { FiatCurrency } from "$lib/types";
+
   import { clickOutside } from "$lib/utils";
 
   export let showModal = false;
   let error = "";
+  let name = "";
   let country = "";
   let bankName = "";
+  let iban = "";
+  let identificationNumber = "";
+  let ownerName = "";
+  let currency = FiatCurrency.EUR;
 </script>
 
 <div
@@ -112,13 +120,13 @@
               >
               <div class="mt-2">
                 <input
-                  id="bankName"
-                  name="bankName"
-                  type="bankName"
-                  autocomplete="bankName"
+                  id="accountName"
+                  name="accountName"
+                  type="text"
+                  autocomplete="accountName"
                   required
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  bind:value={bankName}
+                  bind:value={name}
                 />
               </div>
             </div>
@@ -145,6 +153,27 @@
 
             <div class="mt-2">
               <label
+                for="currency"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Currency</label
+              >
+              <div class="mt-2">
+                <select
+                  id="currency"
+                  name="currency"
+                  autocomplete="currency"
+                  bind:value={currency}
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                >
+                  {#each Object.values(FiatCurrency) as fiatCurrency}
+                    <option>{fiatCurrency}</option>
+                  {/each}
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <label
                 for="name"
                 class="block text-sm font-medium leading-6 text-gray-900"
                 >Nombre del Banco</label
@@ -153,7 +182,7 @@
                 <input
                   id="bankName"
                   name="bankName"
-                  type="bankName"
+                  type="text"
                   autocomplete="bankName"
                   required
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
@@ -170,13 +199,13 @@
               >
               <div class="mt-2">
                 <input
-                  id="bankName"
-                  name="bankName"
-                  type="bankName"
-                  autocomplete="bankName"
+                  id="iban"
+                  name="iban"
+                  type="text"
+                  autocomplete="iban"
                   required
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  bind:value={bankName}
+                  bind:value={iban}
                 />
               </div>
             </div>
@@ -189,13 +218,13 @@
               >
               <div class="mt-2">
                 <input
-                  id="bankName"
-                  name="bankName"
-                  type="bankName"
-                  autocomplete="bankName"
+                  id="idNumber"
+                  name="idNumber"
+                  type="text"
+                  autocomplete="idNumber"
                   required
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  bind:value={bankName}
+                  bind:value={identificationNumber}
                 />
               </div>
             </div>
@@ -208,13 +237,13 @@
               >
               <div class="mt-2">
                 <input
-                  id="bankName"
-                  name="bankName"
-                  type="bankName"
-                  autocomplete="bankName"
+                  id="ownerName"
+                  name="ownerName"
+                  type="owner"
+                  autocomplete="ownerName"
                   required
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  bind:value={bankName}
+                  bind:value={ownerName}
                 />
               </div>
             </div>
@@ -222,6 +251,10 @@
             <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
               <button
                 type="button"
+                on:click={() => {
+                  $bankAccounts = [...$bankAccounts, {name, country, bankName, iban, identificationNumber, ownerName, currency}];
+                  showModal = false;
+                }}
                 class="inline-flex w-full justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                 >Create</button
               >

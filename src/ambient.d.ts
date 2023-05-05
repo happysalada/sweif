@@ -12,7 +12,7 @@ type FxRate = {
 }
 
 
-type RawFxRates = undefined | { "EUR-COP": number } | { "EURC-COP": number } | { "EURC-USDT": number };
+type RawFxRates = undefined | { "EUR-COP": number } | { "EURC-COP": number } | { "EURC-USDT": number } | { "EURC-EUR": number};
 
 type RawFees = undefined | { [FiatCurrency.COP]: FeeRateRangeString[], [FiatCurrency.EUR]: FeeRateRangeString[], [StableCoin.EURC]: FeeRateRangeString[]}
 
@@ -26,4 +26,15 @@ type FeeRateRangeString = {
   min: string,
   max: string,
   rate: string,
+}
+
+type BankAccount = {
+  name: string,
+  // TODO find or make an enum for it
+  country: string,
+  bankName: string,
+  iban: string,
+  identificationNumber: string,
+  ownerName: string,
+  currency: Currency
 }
