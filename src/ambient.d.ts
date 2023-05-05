@@ -12,9 +12,9 @@ type FxRate = {
 }
 
 
-type RawFxRates = undefined | { "EUR-COP": number } | { "EURC-COP": number } | { "EURC-USDT": number } | { "EURC-EUR": number};
+type RawFxRates = undefined | { "EUR-COP": number } | { "EURC-COP": number } | { "EURC-USDT": number } | { "EURC-EUR": number };
 
-type RawFees = undefined | { [FiatCurrency.COP]: FeeRateRangeString[], [FiatCurrency.EUR]: FeeRateRangeString[], [StableCoin.EURC]: FeeRateRangeString[]}
+type RawFees = undefined | { [FiatCurrency.COP]: FeeRateRangeString[], [FiatCurrency.EUR]: FeeRateRangeString[], [StableCoin.EURC]: FeeRateRangeString[] }
 
 type FeeRateRange = {
   min: Decimal,
@@ -38,3 +38,32 @@ type BankAccount = {
   ownerName: string,
   currency: Currency
 }
+
+interface Deposit {
+  type: "deposit",
+  inputAmount: number,
+  inputCurrency: Currency,
+  outputAmount: number,
+  outputCurrency: Currency,
+  at: Date,
+}
+
+interface Withdrawal {
+  type: "withdrawal",
+  inputAmount: number,
+  inputCurrency: Currency,
+  outputAmount: number,
+  outputCurrency: Currency,
+  at: Date,
+}
+
+interface Conversion {
+  type: "conversion",
+  inputAmount: number,
+  inputCurrency: Currency,
+  outputAmount: number,
+  outputCurrency: Currency,
+  at: Date,
+}
+
+type Transaction = Deposit | Withdrawal | Conversion;

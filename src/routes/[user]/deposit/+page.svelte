@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import { StableCoin, FiatCurrency } from "$lib/types";
-  import { BANKS } from "$lib/constants"
 
   import UserNav from "$lib/UserNav.svelte";
   import DepositConfirmModal from "$lib/DepositConfirmModal.svelte";

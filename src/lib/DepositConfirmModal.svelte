@@ -4,7 +4,7 @@
 
   import { clickOutside } from "$lib/utils";
   import { BANKS } from "$lib/constants";
-  import { balances, user } from "$lib/stores";
+  import { balances, user, transactions } from "$lib/stores";
 
   export let showModal = false;
   export let inputAmount: number;
@@ -203,6 +203,7 @@
                       if (amount.isZero()) return;
                       $balances[outputCurrency] = $balances[outputCurrency].add(amount)
                       showModal = false;
+                      $transactions = [...$transactions, {type: "deposit", inputAmount, inputCurrency, outputAmount, outputCurrency, at: new Date()}]
                       inputAmount = 0;
                       outputAmount = 0;
                       goto(`/${$user?.email || 'nico'}/dashboard`);

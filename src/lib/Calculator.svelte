@@ -57,7 +57,6 @@
         min.lessThanOrEqualTo(inputAmountDec) &&
         inputAmountDec.lessThanOrEqualTo(max)
     );
-    console.log("feeRange", feeRange?.min.toString(), feeRange?.max.toString());
     if (feeRange === undefined) {
       fee = 0;
       outputAmount =
@@ -95,11 +94,6 @@
         min.lessThanOrEqualTo(preConversion) &&
         preConversion.lessThanOrEqualTo(max)
     );
-    console.log(
-      "initialFeeRange",
-      initialFeeRange?.min?.toString(),
-      initialFeeRange?.max?.toString()
-    );
     if (initialFeeRange === undefined) {
       fee = 0;
       inputAmount = preConversion.toNumber();
@@ -114,11 +108,6 @@
           min.lessThanOrEqualTo(initialInputAmount) &&
           initialInputAmount.lessThanOrEqualTo(max)
       ) || initialFeeRange;
-    console.log(
-      "finalFeeRange",
-      finalFeeRange.min.toString(),
-      finalFeeRange.max.toString()
-    );
     let finalInputAmount = preConversion.div(
       new Decimal(1).minus(finalFeeRange.rate)
     );

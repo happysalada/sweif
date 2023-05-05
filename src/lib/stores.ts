@@ -17,3 +17,5 @@ export const user = persisted<User | null>('user', null);
 export const balances = writable({...initialBalance})
 
 export const bankAccounts = writable<BankAccount[]>([])
+
+export const transactions = writable<Transaction[]>([])

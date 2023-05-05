@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { Decimal } from "decimal.js";
 	import { goto } from "$app/navigation";
 
   import { FiatCurrency, StableCoin } from "$lib/types";
-  import { bankAccounts, balances, user } from "$lib/stores";
+  import { bankAccounts, balances, user, transactions } from "$lib/stores";
   import type { PageData } from "./$types";
 
   import UserNav from "$lib/UserNav.svelte";
@@ -29,6 +28,7 @@
         .filter(([_currency, balance]) => !balance.isZero())
         .map(([currency, _balance]) => currency)
   $: inputCurrency = inputCurrencies[0] || StableCoin.EURC;
+  let outputAmount = 0;
   export let data: PageData;
 </script>
 
@@ -100,6 +100,7 @@
       bind:inputAmount
       bind:inputCurrency
       {inputCurrencies}
+      bind:outputAmount
       {outputCurrency}
       outputCurrencies={[outputCurrency]}
       disclaimer={false}
@@ -110,6 +111,9 @@
       on:click={() => {
         // amount being zero or more than balance is taken care of by the disabled property
         $balances[inputCurrency] = $balances[inputCurrency].minus(inputAmount);
+
+        $transactions = [...$transactions, {type: "withdrawal", inputAmount, inputCurrency, outputAmount, outputCurrency, at: new Date()}]
+
         goto(`/${$user?.email || 'nico'}/dashboard`);
       }}
       class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 mt-6 w-80"

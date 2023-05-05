@@ -1,11 +1,16 @@
 <script lang="ts">
+  import { monthNames, humanReadableDate } from "$lib/utils";
+  import { transactions } from "$lib/stores";
+
   import UserNav from "$lib/UserNav.svelte";
 </script>
 
 <UserNav />
 
 <div class="flow-root m-8 w-3/4 mx-auto">
-  <ul role="list" class="-mb-8">
+  <ul class="-mb-8">
+    {#each $transactions.reverse() as {type, inputAmount, inputCurrency, outputAmount, outputCurrency, at}}
+    {#if type == "deposit"}
     <li>
       <div class="relative pb-8">
         <span
@@ -36,17 +41,18 @@
           <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
             <div>
               <p class="text-sm text-gray-500">
-                Recargaste COP $1000 Transacción en proceso
+                Recargaste {inputCurrency} {inputAmount} Transacción en proceso
               </p>
             </div>
             <div class="whitespace-nowrap text-right text-sm text-gray-500">
-              <time datetime="2020-09-20">Sep 20</time>
+              <time datetime="{humanReadableDate(at)}">{monthNames[at.getMonth()]} {String(at.getDate()).padStart(2, "0")}</time>
             </div>
           </div>
         </div>
       </div>
     </li>
 
+    {:else if type == "conversion"}
     <li>
       <div class="relative pb-8">
         <span
@@ -77,11 +83,11 @@
           <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
             <div>
               <p class="text-sm text-gray-500">
-                Convertiste COP $1000 a USDT $0.25
+                Convertiste {inputCurrency} {inputAmount} a {outputCurrency} {outputAmount}
               </p>
             </div>
             <div class="whitespace-nowrap text-right text-sm text-gray-500">
-              <time datetime="2020-09-22">Sep 22</time>
+              <time datetime="{humanReadableDate(at)}">{monthNames[at.getMonth()]} {String(at.getDate()).padStart(2, "0")}</time>
             </div>
           </div>
         </div>
@@ -129,6 +135,7 @@
       </li>
       -->
 
+    {:else if type == "withdrawal"}
     <li>
       <div class="relative pb-8">
         <span
@@ -159,15 +166,17 @@
           <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
             <div>
               <p class="text-sm text-gray-500">
-                Retiraste COP $1,000.00 a Bancolombia
+                Retiraste {outputCurrency} {outputAmount}
               </p>
             </div>
             <div class="whitespace-nowrap text-right text-sm text-gray-500">
-              <time datetime="2020-09-30">Sep 30</time>
+              <time datetime="{humanReadableDate(at)}">{monthNames[at.getMonth()]} {String(at.getDate()).padStart(2, "0")}</time>
             </div>
           </div>
         </div>
       </div>
     </li>
+    {/if}
+    {/each}
   </ul>
 </div>

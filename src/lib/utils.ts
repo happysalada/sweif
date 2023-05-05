@@ -1,11 +1,7 @@
 import { Decimal } from "decimal.js"
 
-export function humanReadable(date: Date) {
-  const year = date.getFullYear();
-
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-
-  const day = String(date.getDate()).padStart(2, "0");
+export function humanReadableDatetime(date: Date): string {
+  let formattedDate = humanReadableDate(date);
 
   const hours = String(date.getHours()).padStart(2, "0");
 
@@ -13,8 +9,23 @@ export function humanReadable(date: Date) {
 
   const seconds = String(date.getSeconds()).padStart(2, "0");
 
-  return `${year}-${month}-${day}  ${hours}:${minutes}:${seconds}`;
+  return `${formattedDate}  ${hours}:${minutes}:${seconds}`;
 }
+
+export function humanReadableDate(date: Date): string {
+  
+  const year = date.getFullYear();
+
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`
+}
+
+export const monthNames = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+];
 
 export function clickOutside(node: HTMLElement): { destroy: () => void } {
   const handleClick = (event: MouseEvent): void => {

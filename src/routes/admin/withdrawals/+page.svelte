@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { humanReadable } from "$lib/utils";
+  import { humanReadableDatetime } from "$lib/utils";
 </script>
 <div class="m-12">
   <div class="px-4 sm:px-6 lg:px-8">
@@ -87,7 +87,7 @@
                   >EURC 20.00 (2%)</td
                 >
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                  >{humanReadable(new Date())}</td
+                  >{humanReadableDatetime(new Date())}</td
                 >
                 <td
                   class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"

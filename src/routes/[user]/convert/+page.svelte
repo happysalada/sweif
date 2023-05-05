@@ -3,7 +3,7 @@
 	import { goto } from "$app/navigation";
 
   import { StableCoin } from "$lib/types";
-  import { user, balances } from "$lib/stores";
+  import { user, balances, transactions } from "$lib/stores";
 
   import UserNav from "$lib/UserNav.svelte";
   import Calculator from "$lib/Calculator.svelte";
@@ -38,7 +38,10 @@
       // inputAmount being zero or more than balance is taken care of by the disabled property
       $balances[inputCurrency] = $balances[inputCurrency].minus(inputAmount);
       $balances[outputCurrency] = $balances[outputCurrency].plus(outputAmount);
-			goto(`/${$user.email}/dashboard`);
+
+      $transactions = [...$transactions, {type: "conversion", inputAmount, inputCurrency, outputAmount, outputCurrency, at: new Date()}]
+
+			goto(`/${$user?.email || "nico"}/dashboard`);
     }}
     class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 mt-6 w-80"
     >Convertir</button
