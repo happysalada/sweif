@@ -196,7 +196,7 @@
             {inputCurrency}
           </p>
         </dt>
-        <dt class="text-sm leading-6 text-gray-500">Total we will convert</dt>
+        <dt class="text-sm leading-6 text-gray-500">Total a convertir</dt>
       </div>
       <div class="mt-4 flex w-full px-6 justify-between">
         <dd class="flex">

@@ -31,7 +31,6 @@
     bind:outputAmount
     bind:outputCurrency
     outputCurrencies={[StableCoin.USDT, StableCoin.USDC]}
-    disclaimer={false}
   />
   <button
     type="button"
