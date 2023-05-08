@@ -7,6 +7,8 @@
 		PUBLIC_SURREAL_DATABASE,
 		PUBLIC_SURREAL_NAMESPACE,
 	} from "$env/static/public";
+	import { page } from "$app/stores";
+
 	import { FormState } from "$lib/types";
 	import Nav from "$lib/Nav.svelte";
 
@@ -26,6 +28,11 @@
 	let country: string;
 	// País
 	let passwordConfirmation: string;
+
+	page.subscribe($page => {
+		let signinOrUpString = $page.url.searchParams.get('signinOrUp') || 'Signup';
+		signinOrUp = SignInUp[signinOrUpString as keyof typeof SignInUp]
+	})
 
 	user.subscribe($user => {
 		if ($user?.email) {
@@ -82,6 +89,11 @@
 			error = undefined;
 		}
 	}
+
+	function signInUpSwitch(state: SignInUp): void {
+		signinOrUp = state;	
+		goto(`?signinOrUp=${signinOrUp}`)
+	}
 </script>
 
 <Nav />
@@ -112,14 +124,14 @@
 				<button
 					type="button"
 					class="font-medium text-primary-600 hover:text-primary-500 text-xl"
-					on:click={() => (signinOrUp = SignInUp.Signup)}
+					on:click={() => signInUpSwitch(SignInUp.Signup)}
 					>Crea una cuenta</button
 				>
 			{:else}
 				<button
 					type="button"
 					class="font-medium text-primary-600 hover:text-primary-500 text-xl"
-					on:click={() => (signinOrUp = SignInUp.Signin)}
+					on:click={() => signInUpSwitch(SignInUp.Signin)}
 					>Inicio de sesión</button
 				>
 			{/if}
