@@ -98,10 +98,10 @@
           <p
             class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
-            Envía y recibe dinero digital desde tu app
+            Transferencias internacionales en solo 2 pasos y sin costos ocultos
           </p>
           <p class="mt-6 text-lg leading-8 text-gray-600">
-            Ten el control de tus finanzas usando monedas estables
+            Casos de uso
           </p>
           <dl
             class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none"
@@ -122,10 +122,9 @@
                     d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3"
                   />
                 </svg>
-                Tu billetera digital en distintas monedas
+                Envia dinero a estudiantes en España
               </dt>
               <dd class="inline">
-                Protege tu dinero en dolares y euros digitales
               </dd>
             </div>
 
@@ -145,10 +144,9 @@
                     d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
                   />
                 </svg>
-                Casa de cambio de monedas digitales
+                Mueve dinero entre tus propias cuentas
               </dt>
               <dd class="inline">
-                Intercambia entre monedas digitales de forma instantanea
               </dd>
             </div>
 
@@ -168,11 +166,9 @@
                     d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"
                   />
                 </svg>
-                Giros internacionales usando monedas digitales
+                Paga a tus trabajadores en España
               </dt>
               <dd class="inline">
-                Transferencias internacionales muy rapidas y seguras usando
-                monedas digitales.
               </dd>
             </div>
 
@@ -192,11 +188,9 @@
                     d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
                   />
                 </svg>
-                Retira directo a tu cuenta bancaria
+                Resguarda tu dinero en dolares o euros digitales
               </dt>
               <dd class="inline">
-                Retira tus monedas digitales directo a tu cuenta bancaria en
-                Colombia o España
               </dd>
             </div>
           </dl>

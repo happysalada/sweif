@@ -42,10 +42,10 @@
   <div class="overflow-hidden bg-white shadow sm:rounded-lg m-12">
     <div class="px-4 py-6 sm:px-6">
       <h3 class="text-base font-semibold leading-7 text-gray-900">
-        Bank details
+        Retira en una cuenta bancaria
       </h3>
       <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-        Registra una cuenta o selecciona una ya registrada:
+        Selecciona cuenta bancaria a la que vas a retirar
       </p>
     </div>
     <div class="border-t border-gray-100">
@@ -88,7 +88,7 @@
             type="button"
             on:click={() => (state = State.EnterAmount)}
             class="rounded-md bg-primary-600 py-4 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 w-72 block"
-            >Next</button
+            >Siguiente</button
           >
         </div>
       </dl>
@@ -96,13 +96,22 @@
   </div>
 {:else if state == State.EnterAmount}
   <div class="w-full flex flex-col justify-center items-center">
+
+    <div class="px-4 py-6 sm:px-6">
+      <h3 class="text-base font-semibold leading-7 text-gray-900">
+        Ingresar el monto a retirar
+      </h3>
+    </div>
+
     <Calculator
       fxRates={data.fxRates}
       allFees={data.feeTable}
+      inputText={"Monto a retirar"}
       bind:inputAmount
       bind:inputCurrency
       {inputCurrencies}
       bind:outputAmount
+      outputText={"Recibes en cuenta bancaria"}
       {outputCurrency}
       outputCurrencies={[outputCurrency]}
     />

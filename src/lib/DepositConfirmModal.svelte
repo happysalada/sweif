@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Decimal } from "decimal.js";
-	import { goto } from "$app/navigation";
+  import { goto } from "$app/navigation";
 
   import { clickOutside } from "$lib/utils";
   import { BANKS } from "$lib/constants";
@@ -17,7 +17,7 @@
     ConfirmDetails,
   }
 
-	let state = State.Transfer;
+  let state = State.Transfer;
   let error = "";
 </script>
 
@@ -108,118 +108,177 @@
 
           <div class="">
             <div class="px-4 py-6 sm:px-6">
-              <h3 class="text-base font-semibold leading-7 text-gray-900">
-                Transferencia Bancaria
-              </h3>
-              <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-                {#if state == State.Transfer}
-                  Por favor consignar el monto indicado en Transfiere a la siguiente cuenta bancaria de Bitval Colombia SAS. Cuando hayas hecho la transferencia hacer click en el botón enviado. Una vez que el dinero ingrese a la cuenta verás reflejado tu saldo en tu cuenta sweif.
-                {:else if state == State.ConfirmDetails}
-                  Indica el nombre del banco desde el cual hiciste la transferencia y los últimos 4 dígitos de tu cuenta para poder verificar la proveniencia de la transacción.
-                {/if}
-              </p>
+              {#if state == State.Transfer}
+                <h3 class="text-base font-semibold leading-7 text-gray-900">
+                  Transferencia Bancaria
+                </h3>
+                <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+                  Por favor consignar el monto indicado en "Monto a transferir"
+                  a la siguiente cuenta bancaria de Bitval Colombia SAS.
+                </p>
+                <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+                  Una vez que el dinero ingrese a la cuenta verás reflejado tu
+                  saldo en tu cuenta sweif.
+                </p>
+              {:else if state == State.ConfirmDetails}
+                <h3 class="text-base font-semibold leading-7 text-gray-900">
+                  Datos de tu cuenta
+                </h3>
+                <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+                  Indica el nombre del banco desde el cual hiciste la
+                  transferencia y los últimos 4 dígitos de tu cuenta para poder
+                  verificar la proveniencia de la transacción.
+                </p>
+              {/if}
             </div>
             <div class="border-t border-gray-100">
               <dl class="divide-y divide-gray-100">
                 {#if state == State.Transfer}
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt class="text-sm font-medium text-gray-900">Monto a Transferir</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    {inputAmount} {inputCurrency}
-                  </dd>
-                </div>
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt class="text-sm font-medium text-gray-900 text-right">Nombre de la sociedad</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    Bitval Colombia SAS
-                  </dd>
-                  <dt class="text-sm font-medium text-gray-900 text-right">NIT</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    901617634-7
-                  </dd>
-                  <dt class="text-sm font-medium text-gray-900 text-right">Número de cuenta</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    19300001303
-                  </dd>
-                </div>
-
-
-                <div class="px-4 py-6 flex justify-center">
-                  <button
-                    type="button"
-                    on:click={() => (state = State.ConfirmDetails)}
-                    class="rounded-md bg-primary-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 w-72"
-                    >Enviado</button
+                  <div
+                    class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
                   >
-                </div>
+                    <dt class="text-sm font-medium text-gray-900">
+                      Monto a Transferir
+                    </dt>
+                    <dd
+                      class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
+                    >
+                      {inputAmount}
+                      {inputCurrency}
+                    </dd>
+                  </div>
+                  <div
+                    class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+                  >
+                    <dt class="text-sm font-medium text-gray-900 text-right">
+                      Nombre de la sociedad
+                    </dt>
+                    <dd
+                      class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
+                    >
+                      Bitval Colombia SAS
+                    </dd>
+                    <dt class="text-sm font-medium text-gray-900 text-right">
+                      NIT
+                    </dt>
+                    <dd
+                      class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
+                    >
+                      901617634-7
+                    </dd>
+                    <dt class="text-sm font-medium text-gray-900 text-right">
+                      Número de cuenta
+                    </dt>
+                    <dd
+                      class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
+                    >
+                      19300001303
+                    </dd>
+                  </div>
+                  {#if state == State.Transfer}
+                    <div class="px-4 py-6 sm:px-6">
+                      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+                        Cuando hayas hecho la transferencia hacer click en el
+                        botón enviado.
+                      </p>
+                    </div>
+                  {/if}
+
+                  <div class="px-4 py-6 flex justify-center">
+                    <button
+                      type="button"
+                      on:click={() => (state = State.ConfirmDetails)}
+                      class="rounded-md bg-primary-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 w-72"
+                      >Siguiente</button
+                    >
+                  </div>
                 {:else if state == State.ConfirmDetails}
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">
-                    Nombre de tu banco
-                  </dt>
-                  <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                    <div class="flex justify-start gap-8">
-                      <div class="sm:col-span-2">
-                        <label for="bankAccount" class="sr-only">Bank account</label>
-                        <div>
-                          <select
-                            id="bankAccount"
-                            name="bankAccount"
-                            autocomplete="bankAccount"
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                          >
-                            {#each BANKS as bank}
-                              <option> {bank}</option>
-                            {/each}
-                          </select>
-                        </div>
-                      </div>
-
-                    </div>
-                  </dd>
-
-                  <dt class="text-sm font-medium leading-6 text-gray-900">
-                    Últimos cuatro digitos de tu cuenta
-                  </dt>
-                  <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                    <div class="flex justify-start gap-8">
-                      <div class="sm:col-span-2">
-                        <label for="bankAccount" class="sr-only">Bank account</label>
-                        <div>
-                          <input
-                            type="number"
-                            name="amount"
-                            id="amount"
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                          />
-                        </div>
-                      </div>
-
-                    </div>
-                  </dd>
-                </div>
-
-                <div class="px-4 py-6 flex justify-center">
-                  <button
-                    type="button"
-                    on:click={() => {
-                      // inputAmount is actually an empty string when the input is empty
-                      // this is just for the typesystem
-                      inputAmount = inputAmount || 0;
-                      let amount = new Decimal(outputAmount || 0);
-                      if (amount.isZero()) return;
-                      $balances[outputCurrency] = (new Decimal($balances[outputCurrency])).add(amount)
-                      showModal = false;
-                      $transactions = [...$transactions, {type: "deposit", inputAmount, inputCurrency, outputAmount, outputCurrency, at: new Date()}]
-                      inputAmount = 0;
-                      outputAmount = 0;
-                      goto(`/${$user?.email || 'nico'}/dashboard`);
-                    }}
-                    class="rounded-md bg-primary-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 w-72"
-                    >Confirmo</button
+                  <div
+                    class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
                   >
-                </div>
+                    <dt class="text-sm font-medium leading-6 text-gray-900">
+                      Nombre de tu banco
+                    </dt>
+                    <dd
+                      class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0"
+                    >
+                      <div class="flex justify-start gap-8">
+                        <div class="sm:col-span-2">
+                          <label for="bankAccount" class="sr-only"
+                            >Bank account</label
+                          >
+                          <div>
+                            <select
+                              id="bankAccount"
+                              name="bankAccount"
+                              autocomplete="bankAccount"
+                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                            >
+                              {#each BANKS as bank}
+                                <option> {bank}</option>
+                              {/each}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
 
+                    <dt class="text-sm font-medium leading-6 text-gray-900">
+                      Últimos cuatro digitos de tu cuenta
+                    </dt>
+                    <dd
+                      class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0"
+                    >
+                      <div class="flex justify-start gap-8">
+                        <div class="sm:col-span-2">
+                          <label for="bankAccount" class="sr-only"
+                            >Bank account</label
+                          >
+                          <div>
+                            <input
+                              type="number"
+                              name="amount"
+                              id="amount"
+                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </div>
+
+                  <div class="px-4 py-6 flex justify-center">
+                    <button
+                      type="button"
+                      on:click={() => {
+                        // inputAmount is actually an empty string when the input is empty
+                        // this is just for the typesystem
+                        inputAmount = inputAmount || 0;
+                        let amount = new Decimal(outputAmount || 0);
+                        if (amount.isZero()) return;
+                        $balances[outputCurrency] = new Decimal(
+                          $balances[outputCurrency]
+                        ).add(amount);
+                        showModal = false;
+                        $transactions = [
+                          ...$transactions,
+                          {
+                            type: "deposit",
+                            inputAmount,
+                            inputCurrency,
+                            outputAmount,
+                            outputCurrency,
+                            at: new Date(),
+                          },
+                        ];
+                        inputAmount = 0;
+                        outputAmount = 0;
+                        goto(`/${$user?.email || "nico"}/dashboard`);
+                      }}
+                      class="rounded-md bg-primary-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 w-72"
+                      >Confirmo</button
+                    >
+                  </div>
                 {/if}
               </dl>
             </div>

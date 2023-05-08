@@ -9,10 +9,12 @@
   export let allFees: RawFees;
   export let inputAmount: number | undefined;
   export let inputCurrencies: Currency[];
+  export let inputText = "Tú envias";
   export let inputCurrency: Currency;
   export let outputAmount = 0;
   export let outputCurrency: Currency;
   export let outputCurrencies: Currency[];
+  export let outputText = "Recibe";
 
   let fee = 0;
   $: fxRate = getFxRate(inputCurrency, outputCurrency);
@@ -126,7 +128,7 @@
         <label
           for="account-number"
           class="block text-sm font-medium leading-6 text-gray-900"
-          >Tú envias</label
+          >{inputText}</label
         >
         <div class="mt-2 rounded-md shadow-sm flex justify-between">
           <input
@@ -260,7 +262,7 @@
         <label
           for="account-number"
           class="block text-sm font-medium leading-6 text-gray-900"
-          >Recibe</label
+          >{outputText}</label
         >
         <div class="mt-2 rounded-md shadow-sm flex justify-between">
           <input
