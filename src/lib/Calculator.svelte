@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { FiatCurrency, FxDirection } from "$lib/types";
+  import { FxDirection } from "$lib/types";
   import { stringToDecimalTable } from "$lib/utils";
   import { Decimal } from "decimal.js";
 
@@ -7,7 +7,7 @@
 
   export let fxRates: RawFxRates;
   export let allFees: RawFees;
-  export let inputAmount = 0;
+  export let inputAmount: number | undefined;
   export let inputCurrencies: Currency[];
   export let inputCurrency: Currency;
   export let outputAmount = 0;
@@ -192,7 +192,7 @@
             />
           </svg>
           <p class="pl-4 text-sm text-gray-500 leading-6">
-            {inputAmount - fee}
+            {inputAmount ? (inputAmount - fee) : 0}
             {inputCurrency}
           </p>
         </dt>

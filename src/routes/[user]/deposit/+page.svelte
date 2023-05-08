@@ -7,7 +7,7 @@
   import Calculator from "$lib/Calculator.svelte";
 
   export let data: PageData;
-  let inputAmount = 0;
+  let inputAmount: undefined | number;
   let inputCurrency = FiatCurrency.COP
   let outputAmount = 0;
   let outputCurrency = StableCoin.EURC

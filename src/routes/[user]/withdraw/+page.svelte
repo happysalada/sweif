@@ -25,7 +25,7 @@
   }
 
   let state = State.SelectBankAccount;
-  let inputAmount = 0;
+  let inputAmount: undefined | number;
   $: inputCurrencies = Object.entries($balances)
         .filter(([_currency, balance]) => !(new Decimal(balance)).isZero())
         .map(([currency, _balance]) => currency)
@@ -108,8 +108,11 @@
     />
     <button
       type="button"
-      disabled={inputAmount == 0 || inputAmount == "" || (new Decimal($balances[inputCurrency])).lt(inputAmount)}
+      disabled={inputAmount == 0 || !inputAmount || (new Decimal($balances[inputCurrency])).lt(inputAmount)}
       on:click={() => {
+        // inputAmount is actually an empty string when the input is empty
+        // this is just for the typesystem
+        inputAmount = inputAmount || 0;
         // amount being zero or more than balance is taken care of by the disabled property
         $balances[inputCurrency] = (new Decimal($balances[inputCurrency])).minus(inputAmount);
 

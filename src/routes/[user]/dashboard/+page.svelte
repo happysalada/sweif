@@ -71,8 +71,7 @@
                 >
                   <div>
                     <p class="text-sm text-gray-500">
-                      Recargaste {inputCurrency}
-                      {inputAmount} Transacción en proceso
+                      Recargaste {inputCurrency} {inputAmount} en {outputAmount} {outputCurrency} - Transacción en proceso
                     </p>
                   </div>
                   <div

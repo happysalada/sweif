@@ -11,7 +11,7 @@
   import Calculator from "$lib/Calculator.svelte";
 
   export let data: PageData;
-  let inputAmount = 0;
+  let inputAmount: undefined | number;
   let inputCurrency = StableCoin.EURC;
   let outputAmount = 0;
   let outputCurrency = StableCoin.USDT;
@@ -34,8 +34,11 @@
   />
   <button
     type="button"
-    disabled={inputAmount == 0 || inputAmount == "" || (new Decimal($balances[inputCurrency])).lt(inputAmount)}
+    disabled={inputAmount == 0 || !inputAmount || (new Decimal($balances[inputCurrency])).lt(inputAmount)}
     on:click={() => {
+      // inputAmount is actually an empty string when the input is empty
+      // this is just for the typesystem
+      inputAmount = inputAmount || 0;
       // inputAmount being zero or more than balance is taken care of by the disabled property
       $balances[inputCurrency] = (new Decimal($balances[inputCurrency])).minus(inputAmount);
       $balances[outputCurrency] = (new Decimal($balances[outputCurrency])).plus(outputAmount);

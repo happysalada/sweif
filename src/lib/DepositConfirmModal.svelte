@@ -7,7 +7,7 @@
   import { balances, user, transactions } from "$lib/stores";
 
   export let showModal = false;
-  export let inputAmount: number;
+  export let inputAmount: undefined | number;
   export let inputCurrency: Currency;
   export let outputAmount: number;
   export let outputCurrency: Currency;
@@ -203,6 +203,9 @@
                   <button
                     type="button"
                     on:click={() => {
+                      // inputAmount is actually an empty string when the input is empty
+                      // this is just for the typesystem
+                      inputAmount = inputAmount || 0;
                       let amount = new Decimal(outputAmount || 0);
                       if (amount.isZero()) return;
                       $balances[outputCurrency] = (new Decimal($balances[outputCurrency])).add(amount)
