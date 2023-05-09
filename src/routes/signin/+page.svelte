@@ -2,8 +2,8 @@
 	import { superForm } from "sveltekit-superforms/client";
 
 	import type { PageData } from "./$types";
-	import { goto } from "$app/navigation";
-	import { user } from "$lib/stores";
+	// import { goto } from "$app/navigation";
+	// import { user } from "$lib/stores";
 	import Nav from "$lib/Nav.svelte";
 	import * as EmailValidator from 'email-validator';
 
@@ -16,11 +16,11 @@
 		}
 	});
 
-	user.subscribe(($user) => {
-		if ($user?.email) {
-			goto(`/${$user.email}/dashboard`);
-		}
-	});
+	// user.subscribe(($user) => {
+	// 	if ($user?.email) {
+	// 		goto(`/${$user.email}/dashboard`);
+	// 	}
+	// });
 </script>
 
 <Nav />
