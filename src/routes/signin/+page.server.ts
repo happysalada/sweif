@@ -35,8 +35,6 @@ export const actions = {
 
     const db = new Surreal(`${PUBLIC_SURREAL_URL}/rpc`);
 
-    console.log(form)
-
     try {
       let jwt = await db.signin({
         NS: PUBLIC_SURREAL_NAMESPACE,
@@ -47,7 +45,7 @@ export const actions = {
       });
       // TODO set secure to true the future
       cookies.set('jwt', jwt, { httpOnly: true, sameSite: 'strict', maxAge: ONE_DAY });
-      redirect(302, `/${form.data.email}/dashboard`);
+      return redirect(302, `/${form.data.email}/dashboard`);
     } catch (e) {
       console.log(e);
       return fail(400, { form, error: "wrong email password combination" });
