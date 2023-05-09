@@ -55,7 +55,7 @@
         </p>
         <div class="mt-10 flex items-center gap-x-6">
           <a
-            href="/signin?signinOrUp=Signup"
+            href="/signup"
             class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
             >Crea tu cuenta</a
           >
@@ -76,7 +76,7 @@
           outputCurrency={FiatCurrency.EUR}
         />
         <a
-          href="/signin?signinOrUp=Signup"
+          href="/signup"
           class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 mt-6 w-72 sm:w-80"
           >Crea tu cuenta</a
         >
@@ -198,7 +198,7 @@
 
         <div class="w-full ml-8 mt-12 text-center">
           <a
-            href="/signin?signinOrUp=Signup"
+            href="/signup"
             class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 w-48 block"
             >Crea tu cuenta</a
           >

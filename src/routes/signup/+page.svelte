@@ -11,8 +11,11 @@
 
 	const { form, errors, constraints, enhance } = superForm(data.form, {
 		validators: {
+			name: (input) => input.length < 2 ? 'Name needs to be at least 2 characters': '',
+			country: (input) => input.length == 0 ? 'Country cannot be empty' : '',
 			email: (input) => EmailValidator.validate(input) ? undefined : 'Email is invalid',
-			password: (input) => input.length < 6 ? 'Password is invalid' : undefined,
+			password: (input) => input.length < 6 ? 'Password needs to be at least 6 characters long' : undefined,
+			passwordConfirmation: (input) => input.length < 6 ? 'Password confirmation does not match password' : undefined,
 		}
 	});
 
@@ -39,14 +42,14 @@
 		<h2
 			class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
 		>
-			Inicio de sesión
+			Crea una cuenta
 		</h2>
 		<p class="mt-2 text-center text-sm text-gray-600">
 			Or
 			<a
-				href="/signup"
+				href="/signin"
 				class="font-medium text-primary-600 hover:text-primary-500 text-xl"
-				>Crea una cuenta</a
+				>Inicio de sesión</a
 			>
 		</p>
 	</div>
@@ -54,6 +57,99 @@
 	<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
 		<div class="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
 			<form class="space-y-6" method="POST" use:enhance>
+				<div>
+					<label
+						for="name"
+						class="block text-sm font-medium leading-6 text-gray-900"
+						>Nombre</label
+					>
+					<div class="mt-2">
+						<input
+							id="name"
+							name="name"
+							type="name"
+							autocomplete="name"
+							class="block w-full rounded-md border-0 py-1.5 pr-10 {$errors.email ? 'text-red-900 placeholder:text-red-300 ring-red-300 focus:ring-red-500' : 'text-gray-900 ring-gray-300 focus:ring-primary-500'} ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+							placeholder="Nico sweif"
+							aria-invalid={$errors.name != undefined}
+							aria-describedby={$errors.name != undefined ? "name-error" : ''}
+							data-invalid={$errors.name}
+							bind:value={$form.name}
+							{...$constraints.name}
+						/>
+						{#if $errors.name}
+						<div
+							class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+						>
+							<svg
+								class="h-5 w-5 text-red-500"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+								aria-hidden="true"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
+						{/if}
+					</div>
+					{#if $errors.name}
+					<p class="mt-2 text-sm text-red-600" id="name-error">
+						{$errors.name}
+					</p>
+					{/if}
+				</div>
+
+				<div class="sm:col-span-2">
+					<label
+						for="country"
+						class="block text-sm font-medium leading-6 text-gray-900"
+						>País</label
+					>
+					<div class="mt-2">
+						<select
+							id="country"
+							name="country"
+							autocomplete="country"
+							class="block w-full rounded-md border-0 py-1.5 pr-10 {$errors.email ? 'text-red-900 placeholder:text-red-300 ring-red-300 focus:ring-red-500' : 'text-gray-900 ring-gray-300 focus:ring-primary-500'} ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+							placeholder="Nico sweif"
+							aria-invalid={$errors.country != undefined}
+							aria-describedby={$errors.country != undefined ? "country-error" : ''}
+							data-invalid={$errors.country}
+							bind:value={$form.country}
+							{...$constraints.country}
+						>
+							<option value="CO">Colombia</option>
+							<option value="ES">Spain</option>
+						</select>
+						{#if $errors.country}
+						<div
+							class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+						>
+							<svg
+								class="h-5 w-5 text-red-500"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+								aria-hidden="true"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
+						{/if}
+					</div>
+					{#if $errors.country}
+					<p class="mt-2 text-sm text-red-600" id="email-error">
+						{$errors.country}
+					</p>
+					{/if}
+				</div>
 
 				<div>
 					<label
@@ -146,6 +242,50 @@
 					{/if}
 				</div>
 
+				<div>
+					<label
+						for="passwordConfirmation"
+						class="block text-sm font-medium leading-6 text-gray-900"
+						>Confirmar Contraseña</label
+					>
+					<div class="mt-2">
+						<input
+							id="passwordConfirmation"
+							name="passwordConfirmation"
+							type="password"
+							class="block w-full rounded-md border-0 py-1.5 pr-10 {$errors.email ? 'text-red-900 placeholder:text-red-300 ring-red-300 focus:ring-red-500' : 'text-gray-900 ring-gray-300 focus:ring-primary-500'} ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+							aria-invalid={$errors.passwordConfirmation != undefined}
+							aria-describedby={$errors.passwordConfirmation != undefined ? "password-error" : ''}
+							data-invalid={$errors.passwordConfirmation}
+							bind:value={$form.passwordConfirmation}
+							{...$constraints.passwordConfirmation}
+						/>
+						{#if $errors.passwordConfirmation}
+						<div
+							class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+						>
+							<svg
+								class="h-5 w-5 text-red-500"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+								aria-hidden="true"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
+						{/if}
+					</div>
+					{#if $errors.passwordConfirmation}
+					<p class="mt-2 text-sm text-red-600" id="password-error">
+						{$errors.passwordConfirmation}
+					</p>
+					{/if}
+				</div>
+
 				<div class="flex items-center justify-between">
 					<div class="flex items-center">
 						<input
@@ -171,7 +311,7 @@
 				<div>
 					<button
 						class="flex w-full justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-						>Sign in</button
+						>Sign up</button
 					>
 				</div>
 			</form>

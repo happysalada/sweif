@@ -1,16 +1,5 @@
 <script lang="ts">
-	import { user } from "$lib/stores";
-	import { goto } from "$app/navigation";
-	import Surreal from "surrealdb.js";
-	import { PUBLIC_SURREAL_URL } from "$env/static/public";
 	import Logo from "$lib/Logo.svelte";
-
-	function signout(): void {
-		const db = new Surreal(`${PUBLIC_SURREAL_URL}/rpc`);
-		db.invalidate();
-		user.set({});
-		goto("/");
-	}
 
 	let isDropdownOpen = false;
 </script>
@@ -63,17 +52,9 @@
 			>
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
-			{#if $user?.email}
-				<a
-					href={`/${$user.email}/dashboard`}
-					class="text-sm font-semibold leading-6 text-gray-900"
-					>Cuenta Sweif <span aria-hidden="true">&rarr;</span></a
-				>
-			{:else}
-				<a href="/signin?signinOrUp=Signin" class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-					>Log in <span aria-hidden="true">&rarr;</span></a
-				>
-			{/if}
+			<a href="/signin" class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+				>Log in <span aria-hidden="true">&rarr;</span></a
+			>
 		</div>
 	</nav>
 	<!-- Mobile menu, show/hide based on menu open state. -->
@@ -138,19 +119,11 @@
 
 					</div>
 					<div class="py-6">
-						{#if $user?.email}
-							<button
-								class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-								on:click={signout}
-								>Sign out</button
-							>
-						{:else}
-							<a
-								href="/signin?signinOrUp=Signin"
-							class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-								>Log in</a
-							>
-						{/if}
+						<a
+							href="/signin"
+						class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							>Log in</a
+						>
 					</div>
 				</div>
 			</div>
