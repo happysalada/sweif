@@ -16,7 +16,7 @@
         class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6"
       >
         {#if Object.entries($balances).filter(([currency, stringAmount]) => !(new Decimal(stringAmount).isZero())).length !== 0}
-          <p class="text-white text-lg mt-2 font-medium">Balances:</p>
+          <p class="text-white text-lg mt-4 font-medium">Balances:</p>
         {/if}
         {#each Object.entries($balances) as [currency, stringAmount]}
           {@const amount = new Decimal(stringAmount)}
