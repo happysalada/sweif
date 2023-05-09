@@ -35,6 +35,8 @@ export const actions = {
 
     const db = new Surreal(`${PUBLIC_SURREAL_URL}/rpc`);
 
+    console.log(form)
+
     try {
       let jwt = await db.signin({
         NS: PUBLIC_SURREAL_NAMESPACE,
