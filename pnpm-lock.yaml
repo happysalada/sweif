@@ -17,9 +17,6 @@ dependencies:
   email-validator:
     specifier: ^2.0.4
     version: 2.0.4
-  jslib-html5-camera-photo:
-    specifier: ^3.3.4
-    version: 3.3.4
   surrealdb.js:
     specifier: ^0.8.0
     version: 0.8.0
@@ -1956,10 +1953,6 @@ packages:
     dependencies:
       argparse: 2.0.1
     dev: true
-
-  /jslib-html5-camera-photo@3.3.4:
-    resolution: {integrity: sha512-qysjLnP4bud0+g0qs5uA/7i569x+6ID2ufgezf9XQ+BE3EvhYjz177vi9WXLEuq+V6C/WXEv73NUICvHm5VGmQ==}
-    dev: false
 
   /json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}

@@ -6,7 +6,7 @@ import {
   PUBLIC_SURREAL_NAMESPACE,
   PUBLIC_TUS_URL
 } from '$env/static/public';
-import { Upload } from "tus-js-client";
+// import { Upload } from "tus-js-client";
 
 export function databaseInfo(platform: App.Platform | undefined): DatabaseInfo {
   return {
@@ -106,40 +106,40 @@ function blobToFile(blob: Blob, filename: string): File {
   return new File([blob], filename, { type: blob.type });
 }
 
-export function uploadFile(fileName: string, dataUri: string) {
-  const blob = dataURItoBlob(dataUri);
-  const file = blobToFile(blob, fileName);
-  const upload = new Upload(file, {
-    endpoint: `${PUBLIC_TUS_URL}/files/`,
-    retryDelays: [0, 3000, 5000, 10000, 20000],
-    metadata: {
-      filename: file.name,
-      filetype: file.type,
-    },
-    onError: function(error: Error) {
-      console.log("Failed because: " + error);
-    },
-    onProgress: function(bytesUploaded: number, bytesTotal: number) {
-      const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
-      console.log(bytesUploaded, bytesTotal, percentage + "%");
-    },
-    onSuccess: function() {
-      console.log(
-        "Download %s from %s",
-        (upload.file as File).name,
-        upload.url
-      );
-    },
-  });
+// export function uploadFile(fileName: string, dataUri: string) {
+//   const blob = dataURItoBlob(dataUri);
+//   const file = blobToFile(blob, fileName);
+//   const upload = new Upload(file, {
+//     endpoint: `${PUBLIC_TUS_URL}/files/`,
+//     retryDelays: [0, 3000, 5000, 10000, 20000],
+//     metadata: {
+//       filename: file.name,
+//       filetype: file.type,
+//     },
+//     onError: function(error: Error) {
+//       console.log("Failed because: " + error);
+//     },
+//     onProgress: function(bytesUploaded: number, bytesTotal: number) {
+//       const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
+//       console.log(bytesUploaded, bytesTotal, percentage + "%");
+//     },
+//     onSuccess: function() {
+//       console.log(
+//         "Download %s from %s",
+//         (upload.file as File).name,
+//         upload.url
+//       );
+//     },
+//   });
 
-  // Check if there are any previous uploads to continue.
-  upload.findPreviousUploads().then(function(previousUploads: any[]) {
-    // Found previous uploads so we select the first one.
-    if (previousUploads.length) {
-      upload.resumeFromPreviousUpload(previousUploads[0]);
-    }
+//   // Check if there are any previous uploads to continue.
+//   upload.findPreviousUploads().then(function(previousUploads: any[]) {
+//     // Found previous uploads so we select the first one.
+//     if (previousUploads.length) {
+//       upload.resumeFromPreviousUpload(previousUploads[0]);
+//     }
 
-    // Start the upload
-    upload.start();
-  });
-};
+//     // Start the upload
+//     upload.start();
+//   });
+// };

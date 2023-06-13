@@ -48,7 +48,6 @@
 		"awesome-phonenumber": "^5.8.0",
 		"decimal.js": "^10.4.3",
 		"email-validator": "^2.0.4",
-		"jslib-html5-camera-photo": "^3.3.4",
 		"surrealdb.js": "^0.8.0",
 		"svelte-headlessui": "^0.0.16",
 		"svelte-meta-tags": "^2.8.0",
